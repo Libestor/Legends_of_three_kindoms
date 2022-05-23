@@ -15,8 +15,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="main.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="internet.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="opencv.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="skills_cards.h">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="skills_cards.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="internet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="opencv.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

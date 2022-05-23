@@ -127,7 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="internet.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="opencv.c" />
+    <ClCompile Include="skills_cards.c" />
+    <ClCompile Include="skills_cards.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="internet.h" />
+    <ClInclude Include="opencv.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
