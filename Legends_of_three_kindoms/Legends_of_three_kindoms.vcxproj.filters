@@ -15,19 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c">
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="internet.c">
+    <ClCompile Include="internet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="opencv.c">
+    <ClCompile Include="easyx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="skills_cards.h">
       <Filter>头文件</Filter>
     </ClCompile>
-    <ClCompile Include="skills_cards.c">
+    <ClCompile Include="skills_cards.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

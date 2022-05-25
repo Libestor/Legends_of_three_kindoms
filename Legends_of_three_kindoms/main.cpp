@@ -1,7 +1,13 @@
 #include"internet.h"
-#include"opencv.h"
+#include"easyx.h"
 #include"skills_cards.h"
+int init_all();
 int main()
 {
+
 	return 0;
+}
+int init_all()
+{
+
 }
