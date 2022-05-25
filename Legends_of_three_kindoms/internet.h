@@ -4,6 +4,7 @@ typedef int STATUS; //в╢л╛пео╒
 
 typedef  struct MSG {
 	int blood;
+	int enemy;
 	int card;
 };
 STATUS init_connect();
