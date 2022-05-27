@@ -35,7 +35,7 @@
     <ClInclude Include="internet.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="opencv.h">
+    <ClInclude Include="easyx.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
