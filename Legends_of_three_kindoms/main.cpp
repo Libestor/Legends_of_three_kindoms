@@ -21,7 +21,7 @@ int main()
 		}
 		while (true)
 		{
-
+			
 		}
 
 		flag =server;
@@ -29,7 +29,7 @@ int main()
 	}
 	else if (connect_local() == client)
 	{
-		if (!get_server_ip(user.ip) != NULL)
+		if (!get_server_ip(user.ip) != NULL)//ªÒ»°ip ß∞‹
 		{
 			goto  BEGIN;
 		}
