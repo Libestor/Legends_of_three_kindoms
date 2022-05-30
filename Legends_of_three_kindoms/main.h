@@ -5,8 +5,8 @@
 #include"LinkList.h"
 typedef int STATUS;
 enum warloads {
-	zhangfei,
-	dianwei,
+	ZhangFei,
+	DianWei,
 };
 typedef struct USER {
 	char ip[20];
