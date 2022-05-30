@@ -1,4 +1,5 @@
 #include"skills_cards.h"
+
 WARLORD *zhangfei()//张飞的初始化
 {
 	WARLORD* zhangfei;
@@ -6,6 +7,7 @@ WARLORD *zhangfei()//张飞的初始化
 	zhangfei->PH = 4;
 	zhangfei->PH_current = 4;
 	zhangfei->sha_num = 999;
+	zhangfei->name = ZhangFei;
 	return zhangfei;
 }
 WARLORD* dianwei()//典韦的初始化
@@ -15,6 +17,7 @@ WARLORD* dianwei()//典韦的初始化
 	dianwei->PH = 4;
 	dianwei->PH_current = 4;
 	dianwei->sha_num = 1;
+	dianwei->name = DianWei;
 	dianwei->skills = dianwei_skill;
 }
 int dianwei_skill(WARLORD* A, WARLORD* B)//典韦技能的初始化
