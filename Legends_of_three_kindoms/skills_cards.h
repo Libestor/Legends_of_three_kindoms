@@ -8,6 +8,12 @@ typedef struct WARLORD//武将
 	int sha_num;//出杀的数量
 	int (* skills)(WARLORD* A, WARLORD* B);
 };
+enum clolr {
+	rad_peach, //红桃
+	black_peach, // 黑桃
+	square, //方块
+	plum //梅花
+};
 struct CARDS
 {
 	int color;//1：红桃 2：方块 3：黑桃 4：梅花
