@@ -9,9 +9,9 @@ enum all_warloads {
 	DianWei,
 };
 enum all_cards {
-	sha,
-	shan,
-	tao
+	Sha,
+	Shan,
+	Tao
 
 };
 typedef struct USER {
