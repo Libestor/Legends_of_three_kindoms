@@ -5,7 +5,7 @@
 //	TextList();
 //	return 0;
 //}
-Status InitList(Heard* list) //初始化链表头节点，节点的存储位置叫做头指针，
+Status InitList(Head* list) //初始化链表头节点，节点的存储位置叫做头指针，
 							//我们传入一个头指针，然后初始化指针信息，默认头指针内容时链表长度
 							//我们把尾指针加入，然后就初始化成功
 {
@@ -19,7 +19,7 @@ Status InitList(Heard* list) //初始化链表头节点，节点的存储位置�
 	p->next = NULL;
 	return OK;
 }
-Node* GetElem(Heard list, ElemType e)//查找某个元素所在的指针, 此算法有问题，如果又两个值一样的话就只能查找一次
+Node* GetElem(Head list, ElemType e)//查找某个元素所在的指针, 此算法有问题，如果又两个值一样的话就只能查找一次
 {
 	if (list.length == 0) return ERROR; //链表要存在, 感觉可有可无
 	Node* p;
@@ -35,10 +35,10 @@ Node* GetElem(Heard list, ElemType e)//查找某个元素所在的指针, 此算
 	}
 	return ERROR;
 }
-Heard* GetElem_Plus(Heard list, ElemType e) {
+Head* GetElem_Plus(Head list, ElemType e) {
 	//只能在数字类型下使用
-	Heard *pass;
-	pass = (Heard*)malloc(sizeof(Heard));
+	Head *pass;
+	pass = (Head*)malloc(sizeof(Head));
 	InitList(pass);//初始化所需要的链表
 	Node* p;
 	p = list.next;
@@ -64,7 +64,7 @@ Heard* GetElem_Plus(Heard list, ElemType e) {
 	}
 	
 }
-Node* GetNum(Heard list, int cur)// 查找某个位置上的结点
+Node* GetNum(Head list, int cur)// 查找某个位置上的结点
 {
 	if (list.length = 0 || list.length < cur || cur == 0) //如果是空表或者查找有误就报错
 	{
@@ -79,7 +79,7 @@ Node* GetNum(Heard list, int cur)// 查找某个位置上的结点
 	//*node = p;
 	return  p;
 }
-Status AddList(Heard* list, int cur, ElemType e)// 在某个位置上加入结点（数据）
+Status AddList(Head* list, int cur, ElemType e)// 在某个位置上加入结点（数据）
 {
 	//创建一个结点，然后放入数据，最后让它连接到合适的位置
 	if (list->length + 1 < cur || cur < 0) //确保插入的位置是有效的
@@ -121,7 +121,7 @@ Status AddList(Heard* list, int cur, ElemType e)// 在某个位置上加入结�
 
 }
 
-Status DeletList(Heard* list, int cur) //删除某个结点
+Status DeletList(Head* list, int cur) //删除某个结点
 {
 	if (cur < 0 || list->length < cur || list->length <0) //排除错误
 	{
@@ -149,7 +149,7 @@ Status DeletList(Heard* list, int cur) //删除某个结点
 		return OK;
 	}
 }
-Status DestroyList(Heard* list) //销毁整个表
+Status DestroyList(Head* list) //销毁整个表
 {
 	Node* p = list->next; //取出头指针
 	while (p->next)
