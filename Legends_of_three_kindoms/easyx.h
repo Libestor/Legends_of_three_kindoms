@@ -1,5 +1,6 @@
 #pragma once
 #pragma once
+#include"main.h"
 #include<stdio.h>
 #include<easyx.h>
 // 引用图形库头文件
@@ -35,13 +36,13 @@ void shan_music();
 //桃音效
 void tao_music();
 //回合界面 你的回合 对手的回合
-void state();
+void state(USER *Our,USER *enemy); //绘制当前个人武将和敌方武将   牌都是按照从左往右开始算的
 //攻击时
-void attack();
+void attack(USER *Our,USER *enemy,int card);  // 绘制双方状态，并把第card牌放到屏幕中间
 //被攻击时
-void attacked();
+void attacked(USER* Our, USER* enemy,  int enemy_card_id); //绘制双方状态，并把enemy_card_id放到屏幕中间
 //竞争函数
-void competition();
+void competition(USER* Our, USER* enemy, int card, int enemy_card_i); //绘制双方状态，把我方第card牌放到中件，对面id牌也放到中间
 //
 typedef int STATUS;
 STATUS connect_local(); //告诉我是什么连接（服务端或者客户端）
