@@ -139,6 +139,7 @@ void change()
 	//设置窗口标题
 	SetWindowText(hnd, "三国杀");
 }
+
 ///////////////////////////////////////////////////////////////////复杂函数
 //杀音效
 void sha_music()
@@ -177,6 +178,9 @@ void competition()
 }
 //回合
 int yemian()
+=======
+int main()
+>>>>>>> d0230dcb1de336c8b04cdecec451e36963d2d0b6
 {
 	//创建一个窗口，确定窗口大小
 	initgraph(1280, 773, EW_SHOWCONSOLE);
