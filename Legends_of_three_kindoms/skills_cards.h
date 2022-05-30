@@ -1,7 +1,17 @@
 #pragma once
 #include <malloc.h>
 #include<stdlib.h>
-#include"main.h"
+//#include"main.h"
+enum all_warloads {
+	ZhangFei,
+	DianWei,
+};
+enum all_cards {
+	Sha,
+	Shan,
+	Tao
+
+};
 typedef struct WARLORD//Îä½«
 {
 	int name;

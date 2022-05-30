@@ -4,16 +4,7 @@
 #include"skills_cards.h"
 #include"LinkList.h"
 typedef int STATUS;
-enum all_warloads {
-	ZhangFei,
-	DianWei,
-};
-enum all_cards {
-	sha,
-	shan,
-	tao
 
-};
 typedef struct USER {
 	char ip[20];
 	WARLORD wj;
