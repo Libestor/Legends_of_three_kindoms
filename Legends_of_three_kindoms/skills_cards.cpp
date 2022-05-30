@@ -1,5 +1,4 @@
 #include"skills_cards.h"
-
 WARLORD *zhangfei()//张飞的初始化
 {
 	WARLORD* zhangfei;
@@ -99,4 +98,24 @@ CARDS* search_pai()
 	{
 		return tao();
 	}
+}
+WARLORD* mustzhangfei()//定向返回张飞
+{
+	return zhangfei();
+}
+WARLORD* mustdianwei()//定向返回典韦
+{
+	return dianwei();
+}
+CARDS* mustkill()
+{
+	return kill();
+}
+CARDS* mustshan()
+{
+	return shan();
+}
+CARDS* musttao()
+{
+	return tao();
 }
