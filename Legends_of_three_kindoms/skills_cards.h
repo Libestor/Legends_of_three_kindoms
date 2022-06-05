@@ -1,16 +1,15 @@
 #pragma once
 #include <malloc.h>
 #include<stdlib.h>
-//#include"main.h"
 enum all_warloads {
-	ZhangFei,
+	ZhangFei=1,
 	DianWei,
 };
 enum all_cards {
-	Sha,
+	Sha=1,
 	Shan,
-	Tao
-
+	Tao,
+	juedou
 };
 typedef struct WARLORD//武将
 {
@@ -46,3 +45,9 @@ CARDS* search_pai();//随机抽取手牌
 WARLORD* mustzhangfei();//定向抽取张飞
 WARLORD* mustdianwei();//定向抽取典韦
 CARDS* getcards(int i);//根据传入数据定向返回卡牌
+CARDS* juedou();//定义决斗卡牌的点数和花色
+int juedou_skill(WARLORD* A, WARLORD* B);//定义决斗的功能
+CARDS* nanmanruqin();//定义南蛮入侵的点数和花色
+int nanmanruqin_skill(WARLORD* A, WARLORD* B);//定义南蛮入侵的功能
+CARDS* wanjianqifa();//定义万箭齐发的点数和花色
+int wanjianqifa_skill(WARLORD* A, WARLORD* B);//定义万箭齐发的功能
