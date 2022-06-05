@@ -16,7 +16,6 @@ enum all_cards {
 typedef struct USER {
 	WARLORD *wj;
 	Head* shoupai;
-	int card_num;
 };
  enum CS {
 	server = 1,

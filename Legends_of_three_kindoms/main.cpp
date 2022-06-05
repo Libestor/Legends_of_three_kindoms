@@ -19,6 +19,8 @@ int main()
 	while (true)
 	{
 		state(people, ai);
+		//¸øÎÒ¼¸ºÅÅÆ
+
 
 
 	}
