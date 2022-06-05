@@ -19,6 +19,7 @@ int main()
 		// 游戏开始
 		while (true)
 		{
+
 			//人的回合
 			state(people, ai);
 			//给我几号牌
@@ -28,19 +29,17 @@ int main()
 				break;
 			}
 			Node* p = people->shoupai->next;
-			while (p->next!=NULL)
-			{
-				
-			}
+			//int attack(USER * Our, USER * enemy, int card);
+			int enemy_card = p->data->skill(people, ai);  //调用手牌函数
+			int attack(USER * Our, USER * enemy, int card);
+			//打印牌双方的牌
 			if (ai->wj->PH_current==0) {
 				GameOver();
 			}
 
 		}
-		while (true)
-		{
-			
-		}
+
+		AI(people,ai);
 	}
 	
 	return 0;

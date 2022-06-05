@@ -44,9 +44,5 @@ void attacked(USER* Our, USER* enemy,  int enemy_card_id); //绘制双方状态，并把e
 //竞争函数
 void competition(USER* Our, USER* enemy, int card, int enemy_card_i); //绘制双方状态，把我方第card牌放到中件，对面id牌也放到中间
 //
-typedef int STATUS;
-STATUS connect_local(); //告诉我是什么连接（服务端或者客户端）
-STATUS get_server_ip(char ip[]);//告诉我ip
-STATUS out_clink(); //从客户端界面返回到主界面
 
 
