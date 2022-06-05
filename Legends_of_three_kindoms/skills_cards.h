@@ -45,6 +45,4 @@ WARLORD* search_wujiang();//随机抽取武将
 CARDS* search_pai();//随机抽取手牌
 WARLORD* mustzhangfei();//定向抽取张飞
 WARLORD* mustdianwei();//定向抽取典韦
-CARDS* mustkill();//定向抽取杀
-CARDS* mustshan();//定向抽取闪
-CARDS* musttao();//定向抽取桃
+CARDS* getcards(int i);//根据传入数据定向返回卡牌

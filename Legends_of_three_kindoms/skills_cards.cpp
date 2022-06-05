@@ -69,7 +69,7 @@ int tao_skill(WARLORD* A, WARLORD* B)//桃的功能
 	}
 	return 0;
 }
-WARLORD* search_wujiang()
+WARLORD* search_wujiang()//随机抽取武将
 {
 	int n;
 	n = rand() % 2;//1：张飞 2：典韦
@@ -82,7 +82,7 @@ WARLORD* search_wujiang()
 		return dianwei();
 	}
 }
-CARDS* search_pai()
+CARDS* search_pai()//随机抽取手牌
 {
 	int n;
 	n = rand() % 3;//1：杀 2：闪 3：桃
@@ -107,15 +107,30 @@ WARLORD* mustdianwei()//定向返回典韦
 {
 	return dianwei();
 }
-CARDS* mustkill()
+CARDS* mustkill()//定向返回杀
 {
 	return kill();
 }
-CARDS* mustshan()
+CARDS* mustshan()//定向返回闪
 {
 	return shan();
 }
-CARDS* musttao()
+CARDS* musttao()//定向返回桃
 {
 	return tao();
+}
+CARDS* getcards(int i)
+{
+	if (i == Sha)
+	{
+		return kill();
+	}
+	else if (i == Shan)
+	{
+		return shan();
+	}
+	else if (i == Tao)
+	{
+		return tao();
+	}
 }
