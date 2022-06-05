@@ -160,25 +160,38 @@ void tao_music()
 	//if (Tao)
 	//music(tao);
 }
+//调用杀闪桃图片函数
+void shashantao(int x, int y)
+{
+	switch (1)
+	{
+	case 1:
+		picture(x,y,"杀.png");
+	case 2:
+		picture(x, y, "闪.png");
+	case 3:
+		picture(x, y, "桃.png");
+	}
+}
 //回合界面 你的回合 对手的回合
 void state(USER* Our,USER* enemy)
 {	
 	Node* p = Our->shoupai->next;
-	picture(0, 551, p->data.name);
+	shashantao(0, 551);//
 	//打印自己手牌
-	for (int i = 1,int x=164; i < (Our->shoupai->length); i++, x = x + 164,p=p->next)
+	for (int i = 1,x=164; i < (Our->shoupai->length); i++, x = x + 164,p=p->next)
 	{
 		//牌名text
-		picture(x, 551, p->data->name);
+		shashantao(x, 551);//
 	}
 	Node* p = enemy->shoupai->next;
-	picture(0, 0, p->data->name);
+	shashantao(0, 0);//
 	////////////////////////////////////////////////
 	//打印对方手牌
 	for (int i = 1, x = 1117; i < (enemy->shoupai->length); i++, x = x - 164, p = p->next)
 	{
 		//牌名text
-		picture(x, 0, p->data->name);
+		shashantao(x, 0);//
 	}
 	////血量为零时循环结束
 	///// </summary>
@@ -214,11 +227,12 @@ int attack(USER* Our, USER* enemy, int card)
 			{
 				if (msg.x >= x && msg.x <= x + 164 && msg.y >= 551 && msg.y <= 773)
 				{
-					Node* p = Our->shoupai->next; //此处已经是第一张牌
+					Node* p = Our->shoupai->next;
+					//此处已经是第一张牌
 					for (int i = 2; i <= card; i++)
 					{
 						p = p->next;
-						picture(1117,329,p->data->name);
+						shashantao(1117,329);//
 						for (int i = 2;i<= (Our->shoupai->length); i++)
 						{
 							if (i = card)
@@ -231,7 +245,8 @@ int attack(USER* Our, USER* enemy, int card)
 								state(Our, enemy);
 							}
 						}
-					} //现在就经获得牌了
+					} 
+					//现在就经获得牌了
 					if (p->data->name == shan && p->data->name == "WXKJ")                         //可修改
 					{
 						goto BEGIN;

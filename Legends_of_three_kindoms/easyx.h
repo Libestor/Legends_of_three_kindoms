@@ -35,6 +35,8 @@ void sha_music();
 void shan_music();
 //桃音效
 void tao_music();
+//调用杀闪桃图片函数
+void shashantao(int x, int y);
 //回合界面 你的回合 对手的回合
 void state(USER *Our,USER *enemy); //绘制当前个人武将和敌方武将   牌都是按照从左往右开始算的
 //攻击时
