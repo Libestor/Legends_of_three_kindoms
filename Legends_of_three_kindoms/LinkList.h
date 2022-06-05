@@ -1,5 +1,6 @@
 #pragma once
 #include <stdio.h>
+#include"skills_cards.h"
 #define MAXSIZE  100//定义数组的默认大小
 #define OK 1
 #define ERROR 0
