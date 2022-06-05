@@ -38,7 +38,7 @@ void tao_music();
 //回合界面 你的回合 对手的回合
 void state(USER *Our,USER *enemy); //绘制当前个人武将和敌方武将   牌都是按照从左往右开始算的
 //攻击时
-void attack(USER *Our,USER *enemy,int card);  // 绘制双方状态，并把第card牌放到屏幕中间
+int attack(USER *Our,USER *enemy,int card);  // 绘制双方状态，并把第card牌放到屏幕中间
 //被攻击时
 void attacked(USER* Our, USER* enemy,  int enemy_card_id); //绘制双方状态，并把enemy_card_id放到屏幕中间
 //竞争函数
