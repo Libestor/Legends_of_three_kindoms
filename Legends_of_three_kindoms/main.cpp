@@ -1,10 +1,10 @@
-#include"internet.h"
-#include"easyx.h"
-#include"skills_cards.h"
+
 #include"main.h"
+#include<stdio.h>
 #define MAX_WARLOAD 2  
 #define MAX_CARD 4
 #define PORT 6666
+
 int main()
 {
 	
@@ -19,27 +19,32 @@ int main()
 		// 游戏开始
 		while (true)
 		{
-
+			for (int i = 0; i < 2; i++)
+			{
+				
+			}
 			//人的回合
 			state(people, ai);
 			//给我几号牌
 			int num = printf("a");
 			if (!num)
 			{
+				end_huihe();
 				break;
 			}
+			attack(people, ai, Sha);
 			Node* p = people->shoupai->next;
 			//int attack(USER * Our, USER * enemy, int card);
 			int enemy_card = p->data->skill(people, ai);  //调用手牌函数
-			int attack(USER * Our, USER * enemy, int card);
 			//打印牌双方的牌
+			
 			if (ai->wj->PH_current==0) {
 				GameOver();
 			}
 
 		}
-
 		AI(people,ai);
+		end_huihe();
 	}
 	
 	return 0;
@@ -47,6 +52,7 @@ int main()
 STATUS init_all(USER* user)
 {
 	user = (USER*)malloc(sizeof(USER));
+	user->wj = NULL;
 	user->wj = search_wujiang();
 	//初始化手牌函数
 	if (!InitList(user->shoupai))
@@ -63,4 +69,9 @@ STATUS init_all(USER* user)
 
 	}
 	return 0;
+}
+STATUS GameOver()
+{
+	game_over();
+	return 1;
 }

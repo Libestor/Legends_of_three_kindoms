@@ -1,4 +1,5 @@
 #include"skills_cards.h"
+#include"easyx.h"
 WARLORD *zhangfei()//张飞的初始化
 {
 	WARLORD* zhangfei;
@@ -38,7 +39,6 @@ CARDS* kill()//定义杀的花色和点数
 int kill_skill(USER* A, USER* B)//杀的功能
 {
 	delatenodelocate(A->shoupai, Sha);
-	attack(A, B, Sha);
 	int a;
 	a = delatenodelocate(B->shoupai, Shan);
 	if (a == 0)
@@ -162,7 +162,7 @@ int juedou_skill(USER* A, USER* B)//定义决斗的功能
 		if (a == 0)
 		{
 			B->wj->PH_current--;
-			return 
+			return;
 		}
 		b = delatenodelocate(A->shoupai, Sha);
 		if (b == 0)

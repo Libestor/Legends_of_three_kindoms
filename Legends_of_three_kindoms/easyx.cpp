@@ -49,11 +49,11 @@ int mousepick(ExMessage msg)
 	while (true)
 	{
 		//最下边y从551到773，牌x轴长163，y轴长222
-		for (int i = 0, int a = 1; i <= 815; i = i + 164, a++)
+		for (int i = 0, a = 1; i <= 815; i = i + 164, a++)
 		{
 			//如果点击第一张牌的区域，则返回1；第二张牌则返回2...
 			if (msg.x >= i && msg.x <= (i + 163) && msg.y >= 551 && msg.y <= 773)
-				return a;
+				 return a;
 		}
 
 	}
@@ -164,7 +164,7 @@ void tao_music()
 void state(USER* Our,USER* enemy)
 {	
 	Node* p = Our->shoupai->next;
-	picture(0, 551, p->data->name);
+	picture(0, 551, p->data.name);
 	//打印自己手牌
 	for (int i = 1,int x=164; i < (Our->shoupai->length); i++, x = x + 164,p=p->next)
 	{
@@ -175,7 +175,7 @@ void state(USER* Our,USER* enemy)
 	picture(0, 0, p->data->name);
 	////////////////////////////////////////////////
 	//打印对方手牌
-	for (int i = 1, int x = 1117; i < (enemy->shoupai->length); i++, x = x - 164, p = p->next)
+	for (int i = 1, x = 1117; i < (enemy->shoupai->length); i++, x = x - 164, p = p->next)
 	{
 		//牌名text
 		picture(x, 0, p->data->name);

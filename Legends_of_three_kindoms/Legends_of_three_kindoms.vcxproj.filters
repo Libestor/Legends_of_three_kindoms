@@ -48,4 +48,35 @@
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="BGM.mp3">
+      <Filter>资源文件</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="BGP.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="决斗.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="南蛮入侵.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="杀.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="闪.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="桃.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="万箭齐发.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="无懈可击.png">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

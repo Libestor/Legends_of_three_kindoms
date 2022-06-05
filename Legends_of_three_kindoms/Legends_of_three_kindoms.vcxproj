@@ -140,6 +140,19 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="LinkList.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="BGM.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="BGP.jpg" />
+    <Image Include="万箭齐发.png" />
+    <Image Include="决斗.png" />
+    <Image Include="南蛮入侵.png" />
+    <Image Include="无懈可击.png" />
+    <Image Include="杀.png" />
+    <Image Include="桃.png" />
+    <Image Include="闪.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

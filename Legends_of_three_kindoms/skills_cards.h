@@ -1,7 +1,7 @@
 #pragma once
 #include <malloc.h>
 #include<stdlib.h>
-#include"easyx.h"
+
 //#include"LinkList.h"
 typedef int Status; //定义状态
 typedef CARDS ElemType; //定义默认数据类型
@@ -30,7 +30,7 @@ enum all_cards {
 typedef struct USER {
 	WARLORD* wj;
 	Head* shoupai;
-};
+}USER;
 typedef struct WARLORD//武将
 {
 	int name;
@@ -38,7 +38,7 @@ typedef struct WARLORD//武将
 	int PH_current;//实时生命值
 	int sha_num;//出杀的数量
 	int (* skills)(WARLORD* A, WARLORD* B);
-};
+}WARLOAD;
 enum clolr {
 	rad_peach=1, //红桃
 	black_peach, // 黑桃
@@ -51,7 +51,7 @@ typedef struct CARDS
 	int points;
 	int (* skill)(USER* A, USER* B);
 	int name;//卡牌的名字
-};
+}CARDS;
 WARLORD* zhangfei();//张飞的初始化
 WARLORD* dianwei();//典韦的初始化
 int dianwei_skill(WARLORD* A, WARLORD* B);

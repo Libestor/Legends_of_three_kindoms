@@ -15,7 +15,7 @@ Status InitList(Head* list) //初始化链表头节点，节点的存储位置�
 	p = (Node*)malloc(sizeof(Node));
 	if (p == NULL) return ERROR;
 	list->next = p;
-	p->data = NULL;
+	p->data;
 	p->next = NULL;
 	return OK;
 }
@@ -26,7 +26,7 @@ Node* GetElem(Head list, ElemType e)//查找某个元素所在的指针, 此算�
 	p = list.next;//取出头指针
 	while (p->next)
 	{
-		if (p->data == e)
+		if (p->data.name == e.name)
 		{
 			//node = p;
 			return p;
@@ -35,35 +35,35 @@ Node* GetElem(Head list, ElemType e)//查找某个元素所在的指针, 此算�
 	}
 	return ERROR;
 }
-Head* GetElem_Plus(Head list, ElemType e) {
-	//只能在数字类型下使用
-	Head *pass;
-	pass = (Head*)malloc(sizeof(Head));
-	InitList(pass);//初始化所需要的链表
-	Node* p;
-	p = list.next;
-	int stat = ERROR;
-	int i = 1;
-	while (p->next)
-	{
-		if (p->data == e)
-		{
-			stat = OK;
-			AddList(pass, pass->length + 1, i);
-		}
-		p = p->next;
-		i++;
-	}
-	if (stat)
-	{
-		return pass;
-	}
-	else
-	{
-		return NULL;
-	}
-	
-}
+//Head* GetElem_Plus(Head list, ElemType e) {
+//	//只能在数字类型下使用
+//	Head *pass;
+//	pass = (Head*)malloc(sizeof(Head));
+//	InitList(pass);//初始化所需要的链表
+//	Node* p;
+//	p = list.next;
+//	int stat = ERROR;
+//	int i = 1;
+//	while (p->next)
+//	{
+//		if (p->data == e)
+//		{
+//			stat = OK;
+//			AddList(pass, pass->length + 1, i);
+//		}
+//		p = p->next;
+//		i++;
+//	}
+//	if (stat)
+//	{
+//		return pass;
+//	}
+//	else
+//	{
+//		return NULL;
+//	}
+//	
+//}
 Node* GetNum(Head list, int cur)// 查找某个位置上的结点
 {
 	if (list.length = 0 || list.length < cur || cur == 0) //如果是空表或者查找有误就报错
