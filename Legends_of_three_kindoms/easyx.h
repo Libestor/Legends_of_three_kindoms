@@ -43,7 +43,14 @@ int attack(USER *Our,USER *enemy,int card);  // 绘制双方状态，并把第card牌放到屏
 void attacked(USER* Our, USER* enemy,  int enemy_card_id); //绘制双方状态，并把enemy_card_id放到屏幕中间
 //竞争函数
 void competition(USER* Our, USER* enemy, int card, int enemy_card_i); //绘制双方状态，把我方第card牌放到中件，对面id牌也放到中间
-//
+//报错
+void wrong();//发生错误并退出
+//结束回合
+int end_huihe();
+//开始游戏
+void start_game();//点击开始游戏
+//结束游戏
+void game_over();//结束游戏
 typedef int STATUS;
 STATUS connect_local(); //告诉我是什么连接（服务端或者客户端）
 STATUS get_server_ip(char ip[]);//告诉我ip
