@@ -12,10 +12,9 @@ enum all_cards {
 	Sha,
 	Shan,
 	Tao
-
+};
 typedef struct USER {
-	char ip[20];
-	WARLORD wj;
+	WARLORD *wj;
 	Head* shoupai;
 	int card_num;
 };

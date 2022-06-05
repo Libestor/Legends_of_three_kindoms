@@ -8,69 +8,42 @@
 int main()
 {
 	
-	USER user;
-	init_all(&user); //初始化人物
-	int flag; //规定是服务端还是客户端 
-	// 网络初始化
-	BEGIN:  //返回主界面
-	if (connect_local() == server)//判断是客户端还是服务端
-	{							//服务端
-		if (!get_ip((user.ip))) //获得端口
-		{
-			//获取ip失败
-		}
-		while (true)
-		{
-			
-		}
+	USER *people,*ai;
+	init_all(people); 
+	//初始化人物
+	init_all(ai);
+	//是进入游戏还是退出游戏
 
-		flag =server;
-
-	}
-	else if (connect_local() == client)
-	{
-		if (!get_server_ip(user.ip) != NULL)//获取ip失败
-		{
-			goto  BEGIN;
-		}
-		
-		if (!connect_ip(user.ip))
-		{
-			//连接错误
-		}
-		flag = client;
-		
-		
-	}
-	else
-	{
-		//打印错误
-	}
 
 	// 游戏开始
 	while (true)
 	{
-		if (flag == server)
-		{
+		state(people, ai);
 
-		}
-		else if (flag == client)
-		{
-			
-		}
-		else {
-			// 打印错误处理
-			goto BEGIN;
-		}
+
 	}
 	return 0;
 }
-int init_all()
+STATUS init_all(USER* user)
 {
-	if (!init_connect())
+	user = (USER*)malloc(sizeof(USER));
+	user->wj = search_wujiang();
+	//初始化手牌函数
+	if (!InitList(user->shoupai))
 	{
-		//打印错误连接错误
+		//打印错误
 	}
+	//抽取手牌
+	for (int i = 1; i <= 4; i++)
+	{
+		if (!AddList(user->shoupai,i, *(search_pai())))
+		{
+			//打印错误
+		}
+
+	}
+
+
 
 
 	return 0;
