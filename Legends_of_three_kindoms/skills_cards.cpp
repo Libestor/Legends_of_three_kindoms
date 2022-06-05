@@ -134,3 +134,42 @@ CARDS* getcards(int i)
 		return tao();
 	}
 }
+CARDS* juedou()//定义决斗的点数和花色
+{
+	CARDS* juedou;
+	juedou = (CARDS*)malloc(sizeof(CARDS));
+	juedou->color = rand() % 4;
+	juedou->points = rand() % 13;
+	juedou->skill = juedou_skill;
+	return juedou;
+}
+int juedou_skill(WARLORD* A, WARLORD* B)//定义决斗的功能
+{
+	
+}
+CARDS* nanmanruqin()//定义南蛮入侵的点数和花色
+{
+	CARDS* nanmanruqin;
+	nanmanruqin = (CARDS*)malloc(sizeof(CARDS));
+	nanmanruqin->color = rand() % 4;
+	nanmanruqin->points = rand() % 13;
+	nanmanruqin->skill = nanmanruqin_skill;
+	return nanmanruqin;
+}
+int nanmanruqin_skill(WARLORD* A, WARLORD* B)//定义南蛮入侵的功能
+{
+
+}
+CARDS* wanjianqifa()//定义万箭齐发的点数和花色
+{
+	CARDS* wanjianqifa;
+	wanjianqifa = (CARDS*)malloc(sizeof(CARDS));
+	wanjianqifa->color = rand() % 4;
+	wanjianqifa->points = rand() % 13;
+	wanjianqifa->skill = wanjianqifa_skill;
+	return wanjianqifa;
+}
+int wanjianqifa_skill(WARLORD* A, WARLORD* B)//定义万箭齐发的功能
+{
+
+}
