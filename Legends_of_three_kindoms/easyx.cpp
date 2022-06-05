@@ -142,24 +142,24 @@ void change()
 }
 
 ///////////////////////////////////////////////////////////////////复杂函数
-//杀音效
-//void sha_music()
-//{
-//	if(sha)
-//	music(sha);
-//}
+////杀音效
+void sha_music()
+{
+	//if(Sha)
+	//music(sha);
+}
 ////闪音效
-//void shan_music()
-//{
-//	if (shan)
-//	music(shan);
-//}
+void shan_music()
+{
+	//if (Shan)
+	//music(shan);
+}
 ////桃音效
-//void tao_music()
-//{
-//	if (tao)
-//	music(tao);
-//}
+void tao_music()
+{
+	//if (Tao)
+	//music(tao);
+}
 //回合界面 你的回合 对手的回合
 void state(USER* Our,USER* enemy)
 {	
@@ -361,7 +361,7 @@ int end_huihe()
 	}
 }
 //开始游戏
-void start_game()
+void start_game(USER* Our, USER* enemy)
 {
 	//开始游戏按钮
 	button(555, 346, 170, 70, "开始游戏");
@@ -380,7 +380,7 @@ void start_game()
 				//开始游戏
 				if (msg.x >= 555 && msg.x <= 725 && msg.y >= 346 && msg.y <= 416)
 				{
-					void state(char text[]);
+					state(Our, enemy);
 				}
 				break;
 			default:
