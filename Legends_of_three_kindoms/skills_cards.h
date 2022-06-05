@@ -1,6 +1,32 @@
 #pragma once
 #include <malloc.h>
 #include<stdlib.h>
+//#include"LinkList.h"
+typedef int Status; //定义状态
+typedef CARDS ElemType; //定义默认数据类型
+typedef struct Node// 定义链表节点
+{
+	ElemType data;
+	Node* next;
+}Node;
+typedef struct Head {
+	int length;
+	Node* next;
+}Head;
+enum all_warloads {
+	ZhangFei,
+	DianWei,
+};
+enum all_cards {
+	Sha,
+	Shan,
+	Tao
+};
+typedef struct USER {
+	WARLORD* wj;
+	Head* shoupai;
+};
+
 enum all_warloads {
 	ZhangFei=1,
 	DianWei,

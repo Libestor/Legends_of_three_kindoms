@@ -6,17 +6,17 @@
 #define ERROR 0
 #define TRUE 1
 #define FALSE 0
-typedef int Status; //定义状态
-typedef CARDS ElemType; //定义默认数据类型
-typedef struct Node// 定义链表节点
-{
-    ElemType data;
-    Node* next;
-}Node;
-typedef struct Head {
-    int length;
-    Node* next;
-}Head;
+//typedef int Status; //定义状态
+//typedef CARDS ElemType; //定义默认数据类型
+//typedef struct Node// 定义链表节点
+//{
+//    ElemType data;
+//    Node* next;
+//}Node;
+//typedef struct Head {
+//    int length;
+//    Node* next;
+//}Head;
 Status InitList(Head* list); //初始化表
 Status DeletList(Head* list, int cur);//删除数据表的元素,cur表示下标
 Node* GetNum(Head list, int cur); //获得一个位置的结点, 返回这个位置的结点

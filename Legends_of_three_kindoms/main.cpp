@@ -14,16 +14,35 @@ int main()
 	init_all(ai);
 	//是进入游戏还是退出游戏
 
-
-	// 游戏开始
 	while (true)
 	{
-		state(people, ai);
-		//给我几号牌
+		// 游戏开始
+		while (true)
+		{
+			//人的回合
+			state(people, ai);
+			//给我几号牌
+			int num = printf("a");
+			if (!num)
+			{
+				break;
+			}
+			Node* p = people->shoupai->next;
+			while (p->next!=NULL)
+			{
+				
+			}
+			if (ai->wj->PH_current==0) {
+				GameOver();
+			}
 
-
-
+		}
+		while (true)
+		{
+			
+		}
 	}
+	
 	return 0;
 }
 STATUS init_all(USER* user)
@@ -44,9 +63,5 @@ STATUS init_all(USER* user)
 		}
 
 	}
-
-
-
-
 	return 0;
 }
