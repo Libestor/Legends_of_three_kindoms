@@ -1,12 +1,12 @@
 #pragma once
 #include <stdio.h>
-#define MAXSIZE  100//定义数组的默认大小
+
 #define OK 1
 #define ERROR 0
 #define TRUE 1
 #define FALSE 0
 typedef int Status; //定义状态
-typedef int ElemType; //定义默认数据类型
+typedef CARDS ElemType; //定义默认数据类型
 typedef struct Node// 定义链表节点
 {
     ElemType data;
