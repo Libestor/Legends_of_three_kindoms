@@ -1,6 +1,6 @@
 #pragma once
 #pragma once
-#include"main.h"
+#include"skills_cards.h"
 #include<stdio.h>
 #include<easyx.h>
 // 引用图形库头文件

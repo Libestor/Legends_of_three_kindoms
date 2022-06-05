@@ -1,7 +1,7 @@
 #pragma once
 #include <malloc.h>
 #include<stdlib.h>
-#include"easyx.h"
+//#include"easyx.h"
 //#include"LinkList.h"
 typedef int Status; //定义状态
 typedef CARDS ElemType; //定义默认数据类型
@@ -19,13 +19,14 @@ enum all_warloads {
 	DianWei,
 };
 enum all_cards {
-	Sha=1,
+	Sha = 1,
 	Shan,
 	Tao,
 	JueDou,
 	WanJianQiFa,
 	NanManRuQin,
 	WuXieKeJi,
+	GuoHeChaiQiao,
 };
 typedef struct USER {
 	WARLORD* wj;
@@ -73,3 +74,7 @@ int nanmanruqin_skill(USER* A, USER* B);//定义南蛮入侵的功能
 CARDS* wanjianqifa();//定义万箭齐发的点数和花色
 int wanjianqifa_skill(USER* A, USER* B);//定义万箭齐发的功能
 int delatenodelocate(Head* head, int n);//指定位置删除节点
+int (*shanchu)(USER* Our, USER* enemy, int card);
+CARDS* guohechaiqiao();//定义过河拆桥的花色和点数
+int guohechaiqiao_skill(USER* A, USER* B);//定义过河拆桥的功能
+CARDS* wuxiekeji();//定义无懈可击的花色和点数

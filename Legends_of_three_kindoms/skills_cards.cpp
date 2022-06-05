@@ -1,4 +1,5 @@
 #include"skills_cards.h"
+#include"easyx.h"
 WARLORD *zhangfei()//张飞的初始化
 {
 	WARLORD* zhangfei;
@@ -25,6 +26,14 @@ int dianwei_skill(WARLORD* A, WARLORD* B)//典韦技能的初始化
 	B->PH_current--;
 	return 0;
 }
+CARDS* wuxiekeji()//定义无懈可击的花色和点数
+{
+	CARDS* wuxiekeji;
+	wuxiekeji = (CARDS*)malloc(sizeof(CARDS));
+	wuxiekeji->color = rand() % 4;
+	wuxiekeji->points = rand() % 13;
+	wuxiekeji->name = WuXieKeJi;
+}
 CARDS* kill()//定义杀的花色和点数
 {
 	CARDS* kill;
@@ -37,8 +46,8 @@ CARDS* kill()//定义杀的花色和点数
 }
 int kill_skill(USER* A, USER* B)//杀的功能
 {
+	//int (*shanchu)(USER * Our, USER * enemy, int card) = attack;
 	delatenodelocate(A->shoupai, Sha);
-	attack(A, B, Sha);
 	int a;
 	a = delatenodelocate(B->shoupai, Shan);
 	if (a == 0)
@@ -92,7 +101,7 @@ WARLORD* search_wujiang()//随机抽取武将
 CARDS* search_pai()//随机抽取手牌
 {
 	int n;
-	n = rand() % 3;//1：杀 2：闪 3：桃
+	n = rand() % 8;//1：杀 2：闪 3：桃 4:决斗 5:万箭齐发 6：南蛮入侵 7：无懈可击 8：过河拆桥
 	if (n == 1)
 	{
 		return kill();
@@ -104,6 +113,26 @@ CARDS* search_pai()//随机抽取手牌
 	else if (n == 3)
 	{
 		return tao();
+	}
+	else if (n == 4)
+	{
+		return juedou();
+	}
+	else if (n == 5)
+	{
+		return wanjianqifa();
+	}
+	else if (n == 6)
+	{
+		return nanmanruqin();
+	}
+	else if (n == 7)
+	{
+		return wuxiekeji();
+	}
+	else if (n == 8)
+	{
+		return guohechaiqiao();
 	}
 }
 WARLORD* mustzhangfei()//定向返回张飞
@@ -153,7 +182,13 @@ CARDS* juedou()//定义决斗的点数和花色
 }
 int juedou_skill(USER* A, USER* B)//定义决斗的功能
 {
+	int x;
 	delatenodelocate(A->shoupai, JueDou);
+	x = delatenodelocate(B->shoupai, WuXieKeJi);
+	if (x == 1)
+	{
+		return 0;
+	}
 	for (;;)
 	{
 		int a;
@@ -162,13 +197,13 @@ int juedou_skill(USER* A, USER* B)//定义决斗的功能
 		if (a == 0)
 		{
 			B->wj->PH_current--;
-			return 
+			return 0;
 		}
 		b = delatenodelocate(A->shoupai, Sha);
 		if (b == 0)
 		{
 			A->wj->PH_current--;
-			break;
+			return 0;
 		}
 	}
 }
@@ -182,9 +217,22 @@ CARDS* nanmanruqin()//定义南蛮入侵的点数和花色
 	nanmanruqin->name = NanManRuQin;
 	return nanmanruqin;
 }
-int nanmanruqin_skill(WARLORD* A, WARLORD* B)//定义南蛮入侵的功能
+int nanmanruqin_skill(USER* A, USER* B)//定义南蛮入侵的功能
 {
-
+	int a;
+	int x;
+	delatenodelocate(A->shoupai, NanManRuQin);
+	x = delatenodelocate(B->shoupai, WuXieKeJi);
+	if (x == 1)
+	{
+		return 0;
+	}
+	a = delatenodelocate(B->shoupai, Sha);
+	if (a == 0)
+	{
+		B->wj->PH_current--;
+	}
+	return 0;
 }
 CARDS* wanjianqifa()//定义万箭齐发的点数和花色
 {
@@ -196,9 +244,22 @@ CARDS* wanjianqifa()//定义万箭齐发的点数和花色
 	wanjianqifa->name = WanJianQiFa;
 	return wanjianqifa;
 }
-int wanjianqifa_skill(WARLORD* A, WARLORD* B)//定义万箭齐发的功能
+int wanjianqifa_skill(USER* A, USER* B)//定义万箭齐发的功能
 {
-
+	int b;
+	int x;
+	delatenodelocate(A->shoupai, WanJianQiFa);
+	x = delatenodelocate(B->shoupai, WuXieKeJi);
+	if (x == 1)
+	{
+		return 0;
+	}
+	b = delatenodelocate(B->shoupai, Shan);
+	if (b == 0)
+	{
+		B->wj->PH_current--;
+	}
+	return 0;
 }
 int delatenodelocate(Head* head,int n)
 {
@@ -214,3 +275,24 @@ int delatenodelocate(Head* head,int n)
 	free(p);
 	return 1;
 }//指定位置删除节点
+CARDS* guohechaiqiao()//定义过河拆桥的花色和点数
+{
+	CARDS* guohechaiqiao;
+	guohechaiqiao = (CARDS*)malloc(sizeof(CARDS));
+	guohechaiqiao->color = rand() % 4;
+	guohechaiqiao->points = rand() % 13;
+	guohechaiqiao->name = GuoHeChaiQiao;
+	guohechaiqiao->skill = guohechaiqiao_skill;
+}
+int guohechaiqiao_skill(USER* A, USER* B)//定义过河拆桥的功能
+{
+	int x;
+	delatenodelocate(A->shoupai, GuoHeChaiQiao);
+	x = delatenodelocate(B->shoupai, WuXieKeJi);
+	if (x == 1)
+	{
+		return 0;
+	}
+	free(B->shoupai->next);
+	return 0;
+}
