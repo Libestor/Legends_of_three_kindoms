@@ -36,7 +36,9 @@ void shan_music();
 //桃音效
 void tao_music();
 //调用杀闪桃图片函数
-void shashantao(int x, int y);
+void shashantao(int x, int y, Node* p);
+//敌方手牌背面
+void enemy_cards(int x, int y);
 //回合界面 你的回合 对手的回合
 void state(USER *Our,USER *enemy); //绘制当前个人武将和敌方武将   牌都是按照从左往右开始算的
 //攻击时
@@ -50,8 +52,8 @@ void wrong();//发生错误并退出
 //结束回合
 int end_huihe();
 //开始游戏
-void start_game(USER* Our, USER* enemy);//点击开始游戏
-void start_game1(USER* Our, USER* enemy);//点击开始游戏
+int start_game(USER* Our, USER* enemy);//点击开始游戏
+int start_game1(USER* Our, USER* enemy);//点击开始游戏
 //结束游戏
 void game_over();//结束游戏
 typedef int STATUS;

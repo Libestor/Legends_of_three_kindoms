@@ -162,37 +162,60 @@ void tao_music()
 	//music(tao);
 }
 //调用杀闪桃图片函数
-void shashantao(int x, int y)
+void shashantao(int x, int y, Node* p)
 {
-	switch (1)
+	 switch (p->data->name)
 	{
 	case 1:
 		picture(x,y,"杀.png");
+		break;
 	case 2:
 		picture(x, y, "闪.png");
+		break;
 	case 3:
 		picture(x, y, "桃.png");
+		break;
+	case 4:
+		picture(x, y, "决斗.png");
+		break;
+	case 5:
+		picture(x, y, "万箭齐发.png");
+		break;
+	case 6:
+		picture(x, y, "南蛮入侵.png");
+		break;
+	case 7:
+		picture(x, y, "无懈可击.png");
+		break;
+	case 8:
+		picture(x, y, "过河拆桥.png");
+		break;
 	}
+}
+//敌方手牌背面
+void enemy_cards(int x, int y)
+{
+	picture(x, y, "背面.png");
 }
 //回合界面 你的回合 对手的回合
 void state(USER* Our,USER* enemy)
 {	
 	Node* p = Our->shoupai->next;
-	shashantao(0, 551);//
+	shashantao(0, 551,p);//
 	//打印自己手牌
 	for (int i = 1,x=164; i < (Our->shoupai->length); i++, x = x + 164,p=p->next)
 	{
 		//牌名text
-		shashantao(x, 551);//
+		shashantao(x, 551,p);//
 	}
 	Node* q = enemy->shoupai->next;
-	shashantao(0, 0);//
+	enemy_cards(0, 0);//
 	////////////////////////////////////////////////
 	//打印对方手牌
 	for (int i = 1, x = 1117; i < (enemy->shoupai->length); i++, x = x - 164, q = q->next)
 	{
 		//牌名text
-		shashantao(x, 0);//
+		enemy_cards(x, 0);//
 	}
 	////血量为零时循环结束
 	///// </summary>
@@ -233,7 +256,7 @@ int attack(USER* Our, USER* enemy, int card)
 					for (int i = 2; i <= card; i++)
 					{
 						p = p->next;
-						shashantao(1117,329);//
+						shashantao(1117,329,p);//
 						for (int i = 2;i<= (Our->shoupai->length); i++)
 						{
 							if (i = card)
@@ -248,7 +271,7 @@ int attack(USER* Our, USER* enemy, int card)
 						}
 					} 
 					//现在就经获得牌了
-					if ((p->data->name) == Shan && p->data->name == WuXieKeJi)                         //可修改
+					if ((p->data->name) == Shan || p->data->name == WuXieKeJi)                         //可修改
 					{
 						goto BEGIN;
 					}
@@ -378,7 +401,7 @@ int end_huihe()
 	}
 }
 //开始游戏
-void start_game1(USER* Our, USER* enemy)
+int start_game1(USER* Our, USER* enemy)
 {
 	//开始游戏按钮
 	button(555, 346, 170, 70, "开始游戏");
@@ -408,8 +431,9 @@ void start_game1(USER* Our, USER* enemy)
 		getchar();
 		//关闭窗口
 		closegraph();
-
+		
 	}
+	return 0;
 }
 //结束游戏
 void game_over()
