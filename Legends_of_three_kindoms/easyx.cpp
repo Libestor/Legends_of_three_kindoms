@@ -401,7 +401,7 @@ int end_huihe()
 	}
 }
 //开始游戏
-int start_game1(USER* Our, USER* enemy)
+void start_game1(USER* Our, USER* enemy)
 {
 	//开始游戏按钮
 	button(555, 346, 170, 70, "开始游戏");

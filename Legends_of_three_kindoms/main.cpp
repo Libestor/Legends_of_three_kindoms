@@ -54,7 +54,8 @@ USER* init_all()
 {
 	USER* user;
 	user = (USER*)malloc(sizeof(USER));
-	user->wj =search_wujiang();
+	WARLOAD* war= search_wujiang();
+	user->wj = war;
 	if (user->wj == NULL)
 	{
 		exit(0);
