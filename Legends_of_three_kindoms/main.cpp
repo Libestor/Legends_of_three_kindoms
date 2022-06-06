@@ -1,4 +1,4 @@
-#include"skills_cards.h"
+//#include"skills_cards.h"
 #include"main.h"
 #include<stdio.h>
 #define MAX_WARLOAD 2  
@@ -8,12 +8,13 @@
 int main()
 {
 	
-	USER *people=NULL,*ai=NULL;
-	init_all(people); 
+	USER *people=init_all();
+	USER *ai=init_all();
+	 
 	//初始化人物
-	init_all(ai);
+	
 	//是进入游戏还是退出游戏
-
+	start_game(people, ai);
 	while (true)
 	{
 		// 游戏开始
@@ -49,11 +50,16 @@ int main()
 	
 	return 0;
 }
-STATUS init_all(USER* user)
+USER* init_all()
 {
+	USER* user;
 	user = (USER*)malloc(sizeof(USER));
-	user->wj = NULL;
-	user->wj = search_wujiang();
+	user->wj =search_wujiang();
+	if (user->wj == NULL)
+	{
+		exit(0);
+	}
+	user->shoupai = (Head*)malloc(sizeof(Head));
 	//初始化手牌函数
 	if (!InitList(user->shoupai))
 	{
@@ -62,13 +68,16 @@ STATUS init_all(USER* user)
 	//抽取手牌
 	for (int i = 1; i <= 4; i++)
 	{
-		if (!AddList(user->shoupai,i,(search_pai())))
+		Head* a = user->shoupai;
+		CARDS* pai =   search_pai();
+		if (!AddList(a,i,pai))
 		{
+			exit(0);
 			//打印错误
 		}
 
 	}
-	return 0;
+	return user;
 }
 STATUS GameOver()
 {

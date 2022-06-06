@@ -100,6 +100,7 @@ WARLORD* search_wujiang()//随机抽取武将
 	{
 		return dianwei();
 	}
+	//else return NULL;
 }
 CARDS* search_pai()//随机抽取手牌
 {
@@ -137,6 +138,8 @@ CARDS* search_pai()//随机抽取手牌
 	{
 		return guohechaiqiao();
 	}
+	else return NULL;
+	
 }
 WARLORD* mustzhangfei()//定向返回张飞
 {

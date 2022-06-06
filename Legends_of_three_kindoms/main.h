@@ -8,7 +8,7 @@
 typedef int STATUS;
 
 
- STATUS init_all(USER* user);
+ USER* init_all();
  STATUS GameOver(); //gameover成功就进入新一盘游戏，否则就直接停止程序
 
  

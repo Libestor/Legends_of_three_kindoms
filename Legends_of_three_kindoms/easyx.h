@@ -51,6 +51,7 @@ void wrong();//发生错误并退出
 int end_huihe();
 //开始游戏
 void start_game(USER* Our, USER* enemy);//点击开始游戏
+void start_game1(USER* Our, USER* enemy);//点击开始游戏
 //结束游戏
 void game_over();//结束游戏
 typedef int STATUS;

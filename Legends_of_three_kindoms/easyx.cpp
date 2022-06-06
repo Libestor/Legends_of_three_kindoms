@@ -65,7 +65,8 @@ int zhucaidan()
 	while (true)
 	{
 		//双缓冲绘图
-		BeginBatchDraw();
+		Sleep(1);
+		//BeginBatchDraw();
 		if (peekmessage(&msg, EM_MOUSE))
 		{
 			switch (msg.message)
@@ -102,7 +103,7 @@ int zhucaidan()
 				break;
 			}
 		}
-		EndBatchDraw();
+		//EndBatchDraw();
 	}
 }
 //出牌和弃牌动画函数
@@ -257,9 +258,12 @@ int attack(USER* Our, USER* enemy, int card)
 					}
 					return card;
 				}
+
+				return -1;
 			}
 		}
 	}
+	return -1;
 }
 //被攻击时 绘制双方状态，并把enemy_card_id放到屏幕中间
 void attacked(USER* Our, USER* enemy, int enemy_card_id)
@@ -282,7 +286,7 @@ void wrong()
 	}
 }
 //初始页面
-int yemian()
+int start_game(USER* Our, USER* enemy)
 {
 	//创建一个窗口，确定窗口大小
 	initgraph(1280, 773, EW_SHOWCONSOLE);
@@ -291,10 +295,9 @@ int yemian()
 	picture(0, 0, "./BGP.jpg");
 	//背景音乐
 	BGM();
-	//创建房间按钮
-	button(555, 246, 170, 70, "创建房间");
-	//进入房间按钮
-	button(555, 346, 170, 70, "进入房间");
+	
+	//开始
+	button(555, 346, 170, 70, "开始游戏");
 	//退出按钮
 	button(555, 446, 170, 70, "退出");
 	//鼠标开始
@@ -302,25 +305,24 @@ int yemian()
 	while (true)
 	{
 		//双缓冲绘图
-		BeginBatchDraw();
+		//BeginBatchDraw();
 		if (peekmessage(&msg, EM_MOUSE))
 		{
 			switch (msg.message)
 			{
 			case WM_LBUTTONDOWN:
 				//判断鼠标点击位置
-				//创建房间
-				if (msg.x >= 555 && msg.x <= 725 && msg.y >= 246 && msg.y <= 316)
-				{
-					//若点击创建房间按钮，则打印111
-					printf("111\n");
-				}
+				////创建房间
+				//if (msg.x >= 555 && msg.x <= 725 && msg.y >= 246 && msg.y <= 316)
+				//{
+				//	//若点击创建房间按钮，则打印111
+				//	printf("111\n");
+				//}
 				//进入房间
+				//开始游戏
 				if (msg.x >= 555 && msg.x <= 725 && msg.y >= 346 && msg.y <= 416)
 				{
-					//弹出窗口，提示用户操作
-					int isok = MessageBox(NULL, "请在终端输入你要连接的IP地址：", "连接", MB_OKCANCEL);
-					//char IP[]=getchar();
+					state(Our, enemy);
 				}
 				//退出
 				if (msg.x >= 555 && msg.x <= 725 && msg.y >= 446 && msg.y <= 516)
@@ -337,7 +339,7 @@ int yemian()
 				break;
 			}
 		}
-		EndBatchDraw();
+		//EndBatchDraw();
 	}
 	getchar();
 	//关闭窗口
@@ -376,7 +378,7 @@ int end_huihe()
 	}
 }
 //开始游戏
-void start_game(USER* Our, USER* enemy)
+void start_game1(USER* Our, USER* enemy)
 {
 	//开始游戏按钮
 	button(555, 346, 170, 70, "开始游戏");
