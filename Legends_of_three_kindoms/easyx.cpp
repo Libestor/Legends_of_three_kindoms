@@ -201,6 +201,8 @@ void enemy_cards(int x, int y)
 void state(USER* Our, USER* enemy)
 {	
 	//打印自己手牌
+	cleardevice();
+	picture(0, 0, "./BGP.jpg");
 	Node* p = Our->shoupai->next;
 	shashantao(0, 551,p);//
 	for (int i = 1,x=164; i < (Our->shoupai->length); i++, x = x + 164,p=p->next)
@@ -404,6 +406,7 @@ int start_game(USER* Our, USER* enemy)
 					int isok = MessageBox(hnd, "您确定要退出吗？", "警告！", MB_OKCANCEL);
 					if (isok == IDOK)
 					{
+						return 0;
 						closegraph();
 					}
 				}
@@ -416,15 +419,16 @@ int start_game(USER* Our, USER* enemy)
 	}
 	getchar();
 	//关闭窗口
+	return 0;
 	closegraph();
 
-	return 0;
+	
 }
 //结束回合
 int end_huihe()
 {
 	//结束回合按钮
-	button(555, 346, 170, 70, "结束回合");
+	button(1100, 500, 170, 70, "结束回合");
 	ExMessage msg;
 	while (true)
 	{

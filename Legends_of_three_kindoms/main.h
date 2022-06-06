@@ -7,8 +7,8 @@
 #include"internet.h"
 typedef int STATUS;
 
-
- USER* init_all();
- STATUS GameOver(); //gameover成功就进入新一盘游戏，否则就直接停止程序
+void losscard(USER* people, USER* ai);
+USER* init_all();
+STATUS GameOver(); //gameover成功就进入新一盘游戏，否则就直接停止程序
 
  

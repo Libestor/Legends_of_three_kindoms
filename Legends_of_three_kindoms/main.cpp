@@ -4,7 +4,13 @@
 #define MAX_WARLOAD 2  
 #define MAX_CARD 4
 #define PORT 6666
-
+// statrt = 绘制当前状态
+//int get_card();
+// attack 
+// attacked
+// conpetion 
+// 回合结束 ， 回合开始， 抽牌阶段， 弃牌阶段， 报错函数 
+// 每次绘制前都调用cleardevice(); 函数一次
 int main()
 {
 	
@@ -14,27 +20,41 @@ int main()
 	//初始化人物
 	
 	//是进入游戏还是退出游戏
-	start_game(people, ai);
+	if (!start_game(people, ai))
+	{
+		exit(0);
+	}
 	while (true)
 	{
 		// 游戏开始
 		while (true)
 		{
-			for (int i = 0; i < 2; i++)
-			{
-				
-			}
+			
 			//人的回合
-			state(people, ai);
+			//state(people, ai);
 			//给我几号牌
-			int num = zhucaidan();;
-			if (!num)
+			BEGIN:
+			int num = get_card(people,ai);
+			printf("%d", num);
+			if (num == -1 )
 			{
+				if (people->wj->PH_current<people->shoupai->length)
+				{
+					losscard(people,ai);
+				}
 				end_huihe();
 				break;
 			}
-			attack(people, ai, Sha);
+			if (num == Sha || num == WuXieKeJi)
+			{
+				goto BEGIN;
+			}
+			//attack(people, ai, num);
 			Node* p = people->shoupai->next;
+			for (int i = 1; i < num; i++)
+			{
+				p->next;
+			}
 			//int attack(USER * Our, USER * enemy, int card);
 			int enemy_card = (p->data->skill)(people, ai);  //调用手牌函数
 			//打印牌双方的牌
@@ -42,6 +62,7 @@ int main()
 			if (ai->wj->PH_current==0) {
 				GameOver();
 			}
+			state(people, ai);
 
 		}
 		AI(people,ai);
@@ -84,4 +105,13 @@ STATUS GameOver()
 {
 	game_over();
 	return 1;
+}
+void losscard(USER* people,USER* ai) {
+	int num = people->shoupai->length - people->wj->PH_current;
+	int lost;
+	for (int  i = 1; i <= num; i++)
+	{
+		lost = get_card(people,ai);
+		attack(people, ai, lost);
+	}
 }
