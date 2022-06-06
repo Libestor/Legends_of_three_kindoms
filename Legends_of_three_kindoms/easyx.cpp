@@ -197,21 +197,21 @@ void enemy_cards(int x, int y)
 {
 	picture(x, y, "背面.png");
 }
-//回合界面 你的回合 对手的回合
-void state(USER* Our,USER* enemy)
+//绘制双方状态
+void state(USER* Our, USER* enemy)
 {	
+	//打印自己手牌
 	Node* p = Our->shoupai->next;
 	shashantao(0, 551,p);//
-	//打印自己手牌
 	for (int i = 1,x=164; i < (Our->shoupai->length); i++, x = x + 164,p=p->next)
 	{
 		//牌名text
 		shashantao(x, 551,p);//
 	}
-	Node* q = enemy->shoupai->next;
-	enemy_cards(0, 0);//
 	////////////////////////////////////////////////
 	//打印对方手牌
+	Node* q = enemy->shoupai->next;
+	enemy_cards(0, 0);//
 	for (int i = 1, x = 1117; i < (enemy->shoupai->length); i++, x = x - 164, q = q->next)
 	{
 		//牌名text
@@ -236,9 +236,10 @@ void state(USER* Our,USER* enemy)
 	//	}
 	//}
 }
-//出牌函数 绘制双方状态，选择要出的牌
-int attack(USER* Our, USER* enemy, int card)
+//绘制双方状态，选择要出的牌,并把牌放在屏幕上
+int attack(USER* Our,USER* enemy,int card)
 {
+	state(Our, enemy);
 	ExMessage msg;
 	if (peekmessage(&msg, EM_MOUSE))
 	{
@@ -288,6 +289,53 @@ int attack(USER* Our, USER* enemy, int card)
 	}
 	return -1;
 }
+//接受用户所点击的牌，并返回
+int get_card(USER* Our, USER* enemy)
+{
+	state(Our, enemy);
+	ExMessage msg;
+	if (peekmessage(&msg, EM_MOUSE))
+	{
+		switch (msg.message)
+		{
+		case WM_LBUTTONDOWN:
+			//判断鼠标点击位置,即牌的位置
+			for (int x = 0, card = 1; x <= 164 * (Our->shoupai->length); card++, x = x + 164)
+			{
+				if (msg.x >= x && msg.x <= x + 164 && msg.y >= 551 && msg.y <= 773)
+				{
+					Node* p = Our->shoupai->next;
+					//此处已经是第一张牌
+					for (int i = 2; i <= card; i++)
+					{
+						p = p->next;
+						shashantao(1117, 329, p);//
+						for (int i = 2; i <= (Our->shoupai->length); i++)
+						{
+							if (i = card)
+							{
+								i--;
+								continue;
+							}
+							else
+							{
+								state(Our, enemy);
+							}
+						}
+					}
+					if (card == 0)
+					{
+						break;
+					}
+					return card;
+				}
+
+				return 0;
+			}
+		}
+	}
+	return 0;
+}
 //被攻击时 绘制双方状态，并把enemy_card_id放到屏幕中间
 void attacked(USER* Our, USER* enemy, int enemy_card_id)
 {
@@ -308,11 +356,11 @@ void wrong()
 		closegraph();
 	}
 }
-//初始页面
+//初始页面，返回1表示开始游戏，返回0表示结束游戏
 int start_game(USER* Our, USER* enemy)
 {
 	//创建一个窗口，确定窗口大小
-	initgraph(1280, 773, EW_SHOWCONSOLE);
+	initgraph(1280, 773);
 	change();
 	//背景图
 	picture(0, 0, "./BGP.jpg");
@@ -345,13 +393,15 @@ int start_game(USER* Our, USER* enemy)
 				//开始游戏
 				if (msg.x >= 555 && msg.x <= 725 && msg.y >= 346 && msg.y <= 416)
 				{
-					state(Our, enemy);
+					//表示开始游戏
+					return 1;
 				}
 				//退出
 				if (msg.x >= 555 && msg.x <= 725 && msg.y >= 446 && msg.y <= 516)
 				{
 					//若点击退出
-					int isok = MessageBox(NULL, "您确定要退出吗？", "警告！", MB_OKCANCEL);
+					HWND hnd = GetHWnd();
+					int isok = MessageBox(hnd, "您确定要退出吗？", "警告！", MB_OKCANCEL);
 					if (isok == IDOK)
 					{
 						closegraph();
@@ -433,12 +483,13 @@ void start_game1(USER* Our, USER* enemy)
 		closegraph();
 		
 	}
-	return 0;
+	
 }
 //结束游戏
 void game_over()
 {
-	int isok = MessageBox(NULL, "你赢了", "游戏结束", MB_OKCANCEL);
+	HWND hnd = GetHWnd();
+	int isok = MessageBox(hnd, "你赢了", "游戏结束", MB_OKCANCEL);
 	if (isok == IDOK)
 	{
 		closegraph();
