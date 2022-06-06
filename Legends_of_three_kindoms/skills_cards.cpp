@@ -48,15 +48,19 @@ CARDS* kill()//定义杀的花色和点数
 }
 int kill_skill(USER* A, USER* B)//杀的功能
 {
-	//int (*shanchu)(USER * Our, USER * enemy, int card) = attack;
 	delatenodelocate(A->shoupai, Sha);
+	attack(A,B,Sha);
 	int a;
 	a = delatenodelocate(B->shoupai, Shan);
 	if (a == 0)
 	{
 		B->wj->PH_current--;
 	}
-	return Sha;
+	else if (a == 1)
+	{
+		attack(A, B, Sha);
+	}
+	return 0;
 }
 CARDS* shan()//定义闪的花色和点数
 {
@@ -82,11 +86,12 @@ CARDS* tao()//定义桃的花色和点数
 	tao->name = Tao;
 	return tao;
 }
-int tao_skill(USER* A,USER* B)//桃的功能
+int tao_skill(USER* A, USER* B)//桃的功能
 {
 	delatenodelocate(A->shoupai, Tao);
+	attack(A, B, Tao);
 	A->wj->PH_current++;
-	return Tao;
+	return 0;
 }
 WARLORD* search_wujiang()//随机抽取武将
 {
@@ -190,9 +195,11 @@ int juedou_skill(USER* A, USER* B)//定义决斗的功能
 {
 	int x;
 	delatenodelocate(A->shoupai, JueDou);
+	attack(A, B, JueDou);
 	x = delatenodelocate(B->shoupai, WuXieKeJi);
 	if (x == 1)
 	{
+		attack(A, B, WuXieKeJi);
 		return 0;
 	}
 	for (;;)
@@ -205,12 +212,14 @@ int juedou_skill(USER* A, USER* B)//定义决斗的功能
 			B->wj->PH_current--;
 			return 0;
 		}
+		attack(A, B, Sha);
 		b = delatenodelocate(A->shoupai, Sha);
 		if (b == 0)
 		{
 			A->wj->PH_current--;
 			return 0;
 		}
+		attack(A, B, Sha);
 	}
 }
 CARDS* nanmanruqin()//定义南蛮入侵的点数和花色
@@ -228,15 +237,21 @@ int nanmanruqin_skill(USER* A, USER* B)//定义南蛮入侵的功能
 	int a;
 	int x;
 	delatenodelocate(A->shoupai, NanManRuQin);
+	attack(A, B, NanManRuQin);
 	x = delatenodelocate(B->shoupai, WuXieKeJi);
 	if (x == 1)
 	{
+		attack(A, B, WuXieKeJi);
 		return 0;
 	}
 	a = delatenodelocate(B->shoupai, Sha);
 	if (a == 0)
 	{
 		B->wj->PH_current--;
+	}
+	else if (a == 1)
+	{
+		attack(A, B, Sha);
 	}
 	return 0;
 }
@@ -255,9 +270,11 @@ int wanjianqifa_skill(USER* A, USER* B)//定义万箭齐发的功能
 	int b;
 	int x;
 	delatenodelocate(A->shoupai, WanJianQiFa);
+	attack(A, B, WanJianQiFa);
 	x = delatenodelocate(B->shoupai, WuXieKeJi);
 	if (x == 1)
 	{
+		attack(A, B, WuXieKeJi);
 		return 0;
 	}
 	b = delatenodelocate(B->shoupai, Shan);
@@ -265,12 +282,16 @@ int wanjianqifa_skill(USER* A, USER* B)//定义万箭齐发的功能
 	{
 		B->wj->PH_current--;
 	}
+	else if (b == 1)
+	{
+		attack(A, B, Shan);
+	}
 	return 0;
 }
 int delatenodelocate(Head* head,int n)//指定删除链表节点
 {
 	Node* p = head->next;
-	while (p->data->name != n)
+	while (p->data.name != n)
 	{
 		p = p->next;
 		if (p->next == NULL)
@@ -294,12 +315,17 @@ CARDS* guohechaiqiao()//定义过河拆桥的花色和点数
 int guohechaiqiao_skill(USER* A, USER* B)//定义过河拆桥的功能
 {
 	int x;
+	int temp;
 	delatenodelocate(A->shoupai, GuoHeChaiQiao);
+	attack(A, B, GuoHeChaiQiao);
 	x = delatenodelocate(B->shoupai, WuXieKeJi);
 	if (x == 1)
 	{
+		attack(A, B, WuXieKeJi);
 		return 0;
 	}
+	temp = B->shoupai->next->data;
 	free(B->shoupai->next);
+	attack(A, B, temp);
 	return 0;
 }
