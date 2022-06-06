@@ -291,7 +291,7 @@ int wanjianqifa_skill(USER* A, USER* B)//定义万箭齐发的功能
 int delatenodelocate(Head* head,int n)//指定删除链表节点
 {
 	Node* p = head->next;
-	while (p->data.name != n)
+	while (p->data->name != n)
 	{
 		p = p->next;
 		if (p->next == NULL)
@@ -324,7 +324,7 @@ int guohechaiqiao_skill(USER* A, USER* B)//定义过河拆桥的功能
 		attack(A, B, WuXieKeJi);
 		return 0;
 	}
-	temp = B->shoupai->next->data;
+	temp = B->shoupai->next->data->name;
 	free(B->shoupai->next);
 	attack(A, B, temp);
 	return 0;
