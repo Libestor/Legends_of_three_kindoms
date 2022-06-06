@@ -100,7 +100,7 @@ WARLORD* search_wujiang()//随机抽取武将
 	{
 		return dianwei();
 	}
-	//else return NULL;
+	else return NULL;
 }
 CARDS* search_pai()//随机抽取手牌
 {
