@@ -184,11 +184,11 @@ void state(USER* Our,USER* enemy)
 		//牌名text
 		shashantao(x, 551);//
 	}
-	Node* p = enemy->shoupai->next;
+	Node* q = enemy->shoupai->next;
 	shashantao(0, 0);//
 	////////////////////////////////////////////////
 	//打印对方手牌
-	for (int i = 1, x = 1117; i < (enemy->shoupai->length); i++, x = x - 164, p = p->next)
+	for (int i = 1, x = 1117; i < (enemy->shoupai->length); i++, x = x - 164, q = q->next)
 	{
 		//牌名text
 		shashantao(x, 0);//
@@ -247,7 +247,7 @@ int attack(USER* Our, USER* enemy, int card)
 						}
 					} 
 					//现在就经获得牌了
-					if (p->data->name == shan && p->data->name == "WXKJ")                         //可修改
+					if ((p->data->name) == Shan && p->data->name == WuXieKeJi)                         //可修改
 					{
 						goto BEGIN;
 					}

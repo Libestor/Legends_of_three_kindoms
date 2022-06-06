@@ -1,5 +1,6 @@
 ﻿#include"LinkList.h"
 #include<stdlib.h>
+//#include"skills_cards.h"
 //int main()
 //{
 //	TextList();
@@ -26,7 +27,7 @@ Node* GetElem(Head list, ElemType e)//查找某个元素所在的指针, 此算�
 	p = list.next;//取出头指针
 	while (p->next)
 	{
-		if (p->data.name == e.name)
+		if (p->data->name == e->name)
 		{
 			//node = p;
 			return p;
@@ -98,9 +99,7 @@ Status AddList(Head* list, int cur, ElemType e)// 在某个位置上加入结点
 		list->length++; // 长度加1
 		return OK;
 	}
-	Node x{
-		5,
-	};
+	
 	Node* p ;
 //	*p = &x;
 	p = GetNum(*list, cur - 1);

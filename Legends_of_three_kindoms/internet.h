@@ -1,11 +1,6 @@
 #pragma once
 #include"main.h"
 typedef int STATUS; //×´Ì¬ÐÅÏ¢
-typedef  struct OUR_MSG {
-	int blood;
-	int enemy;
-	int card;
 
-};
 
 void AI(USER* people,USER *ai); //AI

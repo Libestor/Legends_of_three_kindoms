@@ -1,4 +1,4 @@
-
+#include"skills_cards.h"
 #include"main.h"
 #include<stdio.h>
 #define MAX_WARLOAD 2  
@@ -8,7 +8,7 @@
 int main()
 {
 	
-	USER *people,*ai;
+	USER *people=NULL,*ai=NULL;
 	init_all(people); 
 	//初始化人物
 	init_all(ai);
@@ -26,7 +26,7 @@ int main()
 			//人的回合
 			state(people, ai);
 			//给我几号牌
-			int num = printf("a");
+			int num = zhucaidan();;
 			if (!num)
 			{
 				end_huihe();
@@ -35,7 +35,7 @@ int main()
 			attack(people, ai, Sha);
 			Node* p = people->shoupai->next;
 			//int attack(USER * Our, USER * enemy, int card);
-			int enemy_card = p->data->skill(people, ai);  //调用手牌函数
+			int enemy_card = (p->data->skill)(people, ai);  //调用手牌函数
 			//打印牌双方的牌
 			
 			if (ai->wj->PH_current==0) {
@@ -62,7 +62,7 @@ STATUS init_all(USER* user)
 	//抽取手牌
 	for (int i = 1; i <= 4; i++)
 	{
-		if (!AddList(user->shoupai,i, *(search_pai())))
+		if (!AddList(user->shoupai,i,(search_pai())))
 		{
 			//打印错误
 		}

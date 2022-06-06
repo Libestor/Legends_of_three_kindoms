@@ -19,6 +19,7 @@ WARLORD* dianwei()//典韦的初始化
 	dianwei->sha_num = 1;
 	dianwei->name = DianWei;
 	dianwei->skills = dianwei_skill;
+	return dianwei;
 }
 int dianwei_skill(WARLORD* A, WARLORD* B)//典韦技能的初始化
 {
@@ -33,6 +34,7 @@ CARDS* wuxiekeji()//定义无懈可击的花色和点数
 	wuxiekeji->color = rand() % 4;
 	wuxiekeji->points = rand() % 13;
 	wuxiekeji->name = WuXieKeJi;
+	return wuxiekeji;
 }
 CARDS* kill()//定义杀的花色和点数
 {
@@ -68,7 +70,7 @@ CARDS* shan()//定义闪的花色和点数
 }
 int shan_skill(USER* A, USER* B)//闪的功能
 {
-	;
+	return 1;
 }
 CARDS* tao()//定义桃的花色和点数
 {
@@ -78,6 +80,7 @@ CARDS* tao()//定义桃的花色和点数
 	tao->points = rand() % 13;
 	tao->skill = tao_skill;
 	tao->name = Tao;
+	return tao;
 }
 int tao_skill(USER* A,USER* B)//桃的功能
 {
@@ -264,7 +267,7 @@ int wanjianqifa_skill(USER* A, USER* B)//定义万箭齐发的功能
 int delatenodelocate(Head* head,int n)//指定删除链表节点
 {
 	Node* p = head->next;
-	while (p->data != n)
+	while (p->data->name != n)
 	{
 		p = p->next;
 		if (p->next == NULL)
@@ -283,6 +286,7 @@ CARDS* guohechaiqiao()//定义过河拆桥的花色和点数
 	guohechaiqiao->points = rand() % 13;
 	guohechaiqiao->name = GuoHeChaiQiao;
 	guohechaiqiao->skill = guohechaiqiao_skill;
+	return guohechaiqiao;
 }
 int guohechaiqiao_skill(USER* A, USER* B)//定义过河拆桥的功能
 {
