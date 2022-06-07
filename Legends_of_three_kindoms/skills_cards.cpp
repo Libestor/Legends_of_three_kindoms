@@ -1,6 +1,6 @@
 #include"skills_cards.h"
 #include"easyx.h"
-WARLORD *zhangfei()//å¼ é£žçš„åˆå§‹åŒ–
+WARLORD *zhangfei()//ÕÅ·ÉµÄ³õÊ¼»¯
 {
 	WARLORD* zhangfei;
 	zhangfei = (WARLORD*)malloc(sizeof(WARLORD));
@@ -10,7 +10,7 @@ WARLORD *zhangfei()//å¼ é£žçš„åˆå§‹åŒ–
 	zhangfei->name = ZhangFei;
 	return zhangfei;
 }
-WARLORD* dianwei()//å…¸éŸ¦çš„åˆå§‹åŒ–
+WARLORD* dianwei()//µäÎ¤µÄ³õÊ¼»¯
 {
 	WARLORD* dianwei;
 	dianwei = (WARLORD*)malloc(sizeof(WARLORD));
@@ -21,13 +21,13 @@ WARLORD* dianwei()//å…¸éŸ¦çš„åˆå§‹åŒ–
 	dianwei->skills = dianwei_skill;
 	return dianwei;
 }
-int dianwei_skill(WARLORD* A, WARLORD* B)//å…¸éŸ¦æŠ€èƒ½çš„åˆå§‹åŒ–
+int dianwei_skill(WARLORD* A, WARLORD* B)//µäÎ¤¼¼ÄÜµÄ³õÊ¼»¯
 {
 	A->PH_current--;
 	B->PH_current--;
 	return 0;
 }
-CARDS* wuxiekeji()//å®šä¹‰æ— æ‡ˆå¯å‡»çš„èŠ±è‰²å’Œç‚¹æ•°
+CARDS* wuxiekeji()//¶¨ÒåÎÞÐ¸¿É»÷µÄ»¨É«ºÍµãÊý
 {
 	CARDS* wuxiekeji;
 	wuxiekeji = (CARDS*)malloc(sizeof(CARDS));
@@ -37,7 +37,7 @@ CARDS* wuxiekeji()//å®šä¹‰æ— æ‡ˆå¯å‡»çš„èŠ±è‰²å’Œç‚¹æ•°
 	wuxiekeji->name = WuXieKeJi;
 	return wuxiekeji;
 }
-CARDS* kill()//å®šä¹‰æ€çš„èŠ±è‰²å’Œç‚¹æ•°
+CARDS* kill()//¶¨ÒåÉ±µÄ»¨É«ºÍµãÊý
 {
 	CARDS* kill;
 	kill = (CARDS*)malloc(sizeof(CARDS));
@@ -48,7 +48,7 @@ CARDS* kill()//å®šä¹‰æ€çš„èŠ±è‰²å’Œç‚¹æ•°
 	kill->name = Sha;
 	return kill;
 }
-int kill_skill(USER* A, USER* B)//æ€çš„åŠŸèƒ½
+int kill_skill(USER* A, USER* B)//É±µÄ¹¦ÄÜ
 {
 	delatenodelocate(A->shoupai, Sha);
 	attack(A,B,Sha);
@@ -64,7 +64,7 @@ int kill_skill(USER* A, USER* B)//æ€çš„åŠŸèƒ½
 	}
 	return 0;
 }
-CARDS* shan()//å®šä¹‰é—ªçš„èŠ±è‰²å’Œç‚¹æ•°
+CARDS* shan()//¶¨ÒåÉÁµÄ»¨É«ºÍµãÊý
 {
 	CARDS* shan;
 	shan = (CARDS*)malloc(sizeof(CARDS));
@@ -75,11 +75,11 @@ CARDS* shan()//å®šä¹‰é—ªçš„èŠ±è‰²å’Œç‚¹æ•°
 	shan->name = Shan;
 	return shan;
 }
-int shan_skill(USER* A, USER* B)//é—ªçš„åŠŸèƒ½
+int shan_skill(USER* A, USER* B)//ÉÁµÄ¹¦ÄÜ
 {
 	return 1;
 }
-CARDS* tao()//å®šä¹‰æ¡ƒçš„èŠ±è‰²å’Œç‚¹æ•°
+CARDS* tao()//¶¨ÒåÌÒµÄ»¨É«ºÍµãÊý
 {
 	CARDS* tao;
 	tao = (CARDS*)malloc(sizeof(CARDS));
@@ -90,18 +90,18 @@ CARDS* tao()//å®šä¹‰æ¡ƒçš„èŠ±è‰²å’Œç‚¹æ•°
 	tao->name = Tao;
 	return tao;
 }
-int tao_skill(USER* A, USER* B)//æ¡ƒçš„åŠŸèƒ½
+int tao_skill(USER* A, USER* B)//ÌÒµÄ¹¦ÄÜ
 {
 	delatenodelocate(A->shoupai, Tao);
 	attack(A, B, Tao);
 	A->wj->PH_current++;
 	return 0;
 }
-WARLORD* search_wujiang()//éšæœºæŠ½å–æ­¦å°†
+WARLORD* search_wujiang()//Ëæ»ú³éÈ¡Îä½«
 {
 	int n;
 	//srand((unsigned)time(NULL));
-	n = rand() % 2+1;//1ï¼šå¼ é£ž 2ï¼šå…¸éŸ¦
+	n = rand() % 2+1;//1£ºÕÅ·É 2£ºµäÎ¤
 	if (n == 1)
 	{
 		return zhangfei();
@@ -112,11 +112,11 @@ WARLORD* search_wujiang()//éšæœºæŠ½å–æ­¦å°†
 	}
 	else return NULL;
 }
-CARDS* search_pai()//éšæœºæŠ½å–æ‰‹ç‰Œ
+CARDS* search_pai()//Ëæ»ú³éÈ¡ÊÖÅÆ
 {
 	int n;
 	//srand((unsigned)time(NULL));
-	n = rand() % 8+1;//1ï¼šæ€ 2ï¼šé—ª 3ï¼šæ¡ƒ 4:å†³æ–— 5:ä¸‡ç®­é½å‘ 6ï¼šå—è›®å…¥ä¾µ 7ï¼šæ— æ‡ˆå¯å‡» 8ï¼šè¿‡æ²³æ‹†æ¡¥
+	n = rand() % 8+1;//1£ºÉ± 2£ºÉÁ 3£ºÌÒ 4:¾ö¶· 5:Íò¼ýÆë·¢ 6£ºÄÏÂùÈëÇÖ 7£ºÎÞÐ¸¿É»÷ 8£º¹ýºÓ²ðÇÅ
 	if (n == 1)
 	{
 		return kill();
@@ -152,23 +152,23 @@ CARDS* search_pai()//éšæœºæŠ½å–æ‰‹ç‰Œ
 	else return NULL;
 	
 }
-WARLORD* mustzhangfei()//å®šå‘è¿”å›žå¼ é£ž
+WARLORD* mustzhangfei()//¶¨Ïò·µ»ØÕÅ·É
 {
 	return zhangfei();
 }
-WARLORD* mustdianwei()//å®šå‘è¿”å›žå…¸éŸ¦
+WARLORD* mustdianwei()//¶¨Ïò·µ»ØµäÎ¤
 {
 	return dianwei();
 }
-CARDS* mustkill()//å®šå‘è¿”å›žæ€
+CARDS* mustkill()//¶¨Ïò·µ»ØÉ±
 {
 	return kill();
 }
-CARDS* mustshan()//å®šå‘è¿”å›žé—ª
+CARDS* mustshan()//¶¨Ïò·µ»ØÉÁ
 {
 	return shan();
 }
-CARDS* musttao()//å®šå‘è¿”å›žæ¡ƒ
+CARDS* musttao()//¶¨Ïò·µ»ØÌÒ
 {
 	return tao();
 }
@@ -187,7 +187,7 @@ CARDS* getcards(int i)
 		return tao();
 	}
 }
-CARDS* juedou()//å®šä¹‰å†³æ–—çš„ç‚¹æ•°å’ŒèŠ±è‰²
+CARDS* juedou()//¶¨Òå¾ö¶·µÄµãÊýºÍ»¨É«
 {
 	CARDS* juedou;
 	juedou = (CARDS*)malloc(sizeof(CARDS));
@@ -198,7 +198,7 @@ CARDS* juedou()//å®šä¹‰å†³æ–—çš„ç‚¹æ•°å’ŒèŠ±è‰²
 	juedou->name = JueDou;
 	return juedou;
 }
-int juedou_skill(USER* A, USER* B)//å®šä¹‰å†³æ–—çš„åŠŸèƒ½
+int juedou_skill(USER* A, USER* B)//¶¨Òå¾ö¶·µÄ¹¦ÄÜ
 {
 	int x;
 	delatenodelocate(A->shoupai, JueDou);
@@ -229,7 +229,7 @@ int juedou_skill(USER* A, USER* B)//å®šä¹‰å†³æ–—çš„åŠŸèƒ½
 		attack(A, B, Sha);
 	}
 }
-CARDS* nanmanruqin()//å®šä¹‰å—è›®å…¥ä¾µçš„ç‚¹æ•°å’ŒèŠ±è‰²
+CARDS* nanmanruqin()//¶¨ÒåÄÏÂùÈëÇÖµÄµãÊýºÍ»¨É«
 {
 	CARDS* nanmanruqin;
 	nanmanruqin = (CARDS*)malloc(sizeof(CARDS));
@@ -240,7 +240,7 @@ CARDS* nanmanruqin()//å®šä¹‰å—è›®å…¥ä¾µçš„ç‚¹æ•°å’ŒèŠ±è‰²
 	nanmanruqin->name = NanManRuQin;
 	return nanmanruqin;
 }
-int nanmanruqin_skill(USER* A, USER* B)//å®šä¹‰å—è›®å…¥ä¾µçš„åŠŸèƒ½
+int nanmanruqin_skill(USER* A, USER* B)//¶¨ÒåÄÏÂùÈëÇÖµÄ¹¦ÄÜ
 {
 	int a;
 	int x;
@@ -263,7 +263,7 @@ int nanmanruqin_skill(USER* A, USER* B)//å®šä¹‰å—è›®å…¥ä¾µçš„åŠŸèƒ½
 	}
 	return 0;
 }
-CARDS* wanjianqifa()//å®šä¹‰ä¸‡ç®­é½å‘çš„ç‚¹æ•°å’ŒèŠ±è‰²
+CARDS* wanjianqifa()//¶¨ÒåÍò¼ýÆë·¢µÄµãÊýºÍ»¨É«
 {
 	CARDS* wanjianqifa;
 	wanjianqifa = (CARDS*)malloc(sizeof(CARDS));
@@ -274,7 +274,7 @@ CARDS* wanjianqifa()//å®šä¹‰ä¸‡ç®­é½å‘çš„ç‚¹æ•°å’ŒèŠ±è‰²
 	wanjianqifa->name = WanJianQiFa;
 	return wanjianqifa;
 }
-int wanjianqifa_skill(USER* A, USER* B)//å®šä¹‰ä¸‡ç®­é½å‘çš„åŠŸèƒ½
+int wanjianqifa_skill(USER* A, USER* B)//¶¨ÒåÍò¼ýÆë·¢µÄ¹¦ÄÜ
 {
 	int b;
 	int x;
@@ -297,10 +297,17 @@ int wanjianqifa_skill(USER* A, USER* B)//å®šä¹‰ä¸‡ç®­é½å‘çš„åŠŸèƒ½
 	}
 	return 0;
 }
-int delatenodelocate(Head* head,int n)//æŒ‡å®šåˆ é™¤é“¾è¡¨èŠ‚ç‚¹
+int delatenodelocate(Head* head,int n)//Ö¸¶¨É¾³ýÁ´±í½Úµã
 {
 	Node* p = head->next;
-	while (p->data->name != n)
+	if (p->data->name == n )
+	{
+		head->next = p->next;
+		free(p);
+		head->length--;
+		return 1;
+	}
+	while (p->next->data->name != n)
 	{
 		p = p->next;
 		if (p->next == NULL)
@@ -308,10 +315,12 @@ int delatenodelocate(Head* head,int n)//æŒ‡å®šåˆ é™¤é“¾è¡¨èŠ‚ç‚¹
 			return 0;
 		}
 	}
+	Node* temp = p->next;
 	free(p);
+	head->length--;
 	return 1;
-}//æŒ‡å®šä½ç½®åˆ é™¤èŠ‚ç‚¹
-CARDS* guohechaiqiao()//å®šä¹‰è¿‡æ²³æ‹†æ¡¥çš„èŠ±è‰²å’Œç‚¹æ•°
+}//Ö¸¶¨Î»ÖÃÉ¾³ý½Úµã
+CARDS* guohechaiqiao()//¶¨Òå¹ýºÓ²ðÇÅµÄ»¨É«ºÍµãÊý
 {
 	CARDS* guohechaiqiao;
 	guohechaiqiao = (CARDS*)malloc(sizeof(CARDS));
@@ -322,7 +331,7 @@ CARDS* guohechaiqiao()//å®šä¹‰è¿‡æ²³æ‹†æ¡¥çš„èŠ±è‰²å’Œç‚¹æ•°
 	guohechaiqiao->skill = guohechaiqiao_skill;
 	return guohechaiqiao;
 }
-int guohechaiqiao_skill(USER* A, USER* B)//å®šä¹‰è¿‡æ²³æ‹†æ¡¥çš„åŠŸèƒ½
+int guohechaiqiao_skill(USER* A, USER* B)//¶¨Òå¹ýºÓ²ðÇÅµÄ¹¦ÄÜ
 {
 	int x;
 	int temp;
