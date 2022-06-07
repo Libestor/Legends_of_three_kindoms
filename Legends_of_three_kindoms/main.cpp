@@ -1,6 +1,7 @@
 //#include"skills_cards.h"
 #include"main.h"
 #include<stdio.h>
+#include<stdlib.h>
 #define MAX_WARLOAD 2  
 #define MAX_CARD 4
 #define PORT 6666
@@ -11,9 +12,10 @@
 // conpetion 
 // 回合结束 ， 回合开始， 抽牌阶段， 弃牌阶段， 报错函数 
 // 每次绘制前都调用cleardevice(); 函数一次
+
 int main()
 {
-	
+	srand(GetTickCount());
 	USER *people=init_all();
 	USER *ai=init_all();
 	 
@@ -92,6 +94,10 @@ USER* init_all()
 	{
 		Head* a = user->shoupai;
 		CARDS* pai =   search_pai();
+		if (pai ==NULL)
+		{
+			exit(0);
+		}
 		if (!AddList(a,i,pai))
 		{
 			exit(0);
@@ -115,3 +121,4 @@ void losscard(USER* people,USER* ai) {
 		attack(people, ai, lost);
 	}
 }
+

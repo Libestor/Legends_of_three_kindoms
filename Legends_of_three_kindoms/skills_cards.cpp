@@ -31,7 +31,7 @@ CARDS* wuxiekeji()//定义无懈可击的花色和点数
 {
 	CARDS* wuxiekeji;
 	wuxiekeji = (CARDS*)malloc(sizeof(CARDS));
-	srand((unsigned)time(NULL));
+	//srand((unsigned)time(NULL));
 	wuxiekeji->color = rand() % 4+1;
 	wuxiekeji->points = rand() % 13+1;
 	wuxiekeji->name = WuXieKeJi;
@@ -41,7 +41,7 @@ CARDS* kill()//定义杀的花色和点数
 {
 	CARDS* kill;
 	kill = (CARDS*)malloc(sizeof(CARDS));
-	srand((unsigned)time(NULL));
+	//srand((unsigned)time(NULL));
 	kill->color = rand() % 4+1;
 	kill->points = rand() % 13+1;//A 2 3 4 5 6 7 8 9 10 J Q K
 	kill->skill = kill_skill;
@@ -68,7 +68,7 @@ CARDS* shan()//定义闪的花色和点数
 {
 	CARDS* shan;
 	shan = (CARDS*)malloc(sizeof(CARDS));
-	srand((unsigned)time(NULL));
+	//srand((unsigned)time(NULL));
 	shan->color = rand() % 4+1;
 	shan->points = rand() % 13+1;
 	shan->skill = shan_skill;
@@ -83,7 +83,7 @@ CARDS* tao()//定义桃的花色和点数
 {
 	CARDS* tao;
 	tao = (CARDS*)malloc(sizeof(CARDS));
-	srand((unsigned)time(NULL));
+	//srand((unsigned)time(NULL));
 	tao->color = rand() % 4+1;
 	tao->points = rand() % 13+1;
 	tao->skill = tao_skill;
@@ -100,7 +100,7 @@ int tao_skill(USER* A, USER* B)//桃的功能
 WARLORD* search_wujiang()//随机抽取武将
 {
 	int n;
-	srand((unsigned)time(NULL));
+	//srand((unsigned)time(NULL));
 	n = rand() % 2+1;//1：张飞 2：典韦
 	if (n == 1)
 	{
@@ -115,7 +115,7 @@ WARLORD* search_wujiang()//随机抽取武将
 CARDS* search_pai()//随机抽取手牌
 {
 	int n;
-	srand((unsigned)time(NULL));
+	//srand((unsigned)time(NULL));
 	n = rand() % 8+1;//1：杀 2：闪 3：桃 4:决斗 5:万箭齐发 6：南蛮入侵 7：无懈可击 8：过河拆桥
 	if (n == 1)
 	{
@@ -191,7 +191,7 @@ CARDS* juedou()//定义决斗的点数和花色
 {
 	CARDS* juedou;
 	juedou = (CARDS*)malloc(sizeof(CARDS));
-	srand((unsigned)time(NULL));
+	//srand((unsigned)time(NULL));
 	juedou->color = rand() % 4+1;
 	juedou->points = rand() % 13+1;
 	juedou->skill = juedou_skill;
@@ -233,7 +233,7 @@ CARDS* nanmanruqin()//定义南蛮入侵的点数和花色
 {
 	CARDS* nanmanruqin;
 	nanmanruqin = (CARDS*)malloc(sizeof(CARDS));
-	srand((unsigned)time(NULL));
+	//srand((unsigned)time(NULL));
 	nanmanruqin->color = rand() % 4+1;
 	nanmanruqin->points = rand() % 13+1;
 	nanmanruqin->skill = nanmanruqin_skill;
@@ -267,7 +267,7 @@ CARDS* wanjianqifa()//定义万箭齐发的点数和花色
 {
 	CARDS* wanjianqifa;
 	wanjianqifa = (CARDS*)malloc(sizeof(CARDS));
-	srand((unsigned)time(NULL));
+	//srand((unsigned)time(NULL));
 	wanjianqifa->color = rand() % 4+1;
 	wanjianqifa->points = rand() % 13+1;
 	wanjianqifa->skill = wanjianqifa_skill;
@@ -315,7 +315,7 @@ CARDS* guohechaiqiao()//定义过河拆桥的花色和点数
 {
 	CARDS* guohechaiqiao;
 	guohechaiqiao = (CARDS*)malloc(sizeof(CARDS));
-	srand((unsigned)time(NULL));
+	//srand((unsigned)time(NULL));
 	guohechaiqiao->color = rand() % 4+1;
 	guohechaiqiao->points = rand() % 13+1;
 	guohechaiqiao->name = GuoHeChaiQiao;
