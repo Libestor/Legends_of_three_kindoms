@@ -29,12 +29,8 @@ void button(int x, int y, int w, int h, const char text[]);
 //窗口标题
 void change();
 ///////////////////////////////////////////////////////////复杂函数
-//杀音效
-void sha_music();
-//闪音效
-void shan_music();
-//桃音效
-void tao_music();
+//调用杀闪桃音效函数
+void shashantao_music(Node* p);
 //调用杀闪桃图片函数
 void shashantao(int x, int y, Node* p);
 //敌方手牌背面

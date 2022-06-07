@@ -23,7 +23,7 @@ void BGM()
 	}
 }
 //音效调用函数
-void music(char text[])
+void music(const char text[])
 {
 	//触发条件
 	//if()
@@ -143,23 +143,37 @@ void change()
 }
 
 ///////////////////////////////////////////////////////////////////复杂函数
-////杀音效
-void sha_music()
+
+//调用杀闪桃音效函数
+void shashantao_music(Node* p)
 {
-	//if(Sha)
-	//music(sha);
-}
-////闪音效
-void shan_music()
-{
-	//if (Shan)
-	//music(shan);
-}
-////桃音效
-void tao_music()
-{
-	//if (Tao)
-	//music(tao);
+	switch (p->data->name)
+	{
+	case 1:
+		music("杀");
+		break;
+	case 2:
+		music("闪");
+		break;
+	case 3:
+		music("桃");
+		break;
+	case 4:
+		music("决斗");
+		break;
+	case 5:
+		music("万箭齐发");
+		break;
+	case 6:
+		music("南蛮入侵");
+		break;
+	case 7:
+		music("无懈可击");
+		break;
+	case 8:
+		music("过河拆桥");
+		break;
+	}
 }
 //调用杀闪桃图片函数
 void shashantao(int x, int y, Node* p)
@@ -230,6 +244,7 @@ void state(USER* Our, USER* enemy)
 	{
 		//牌名text
 		shashantao(x, 551,p);//
+		Sleep(1000);
 	}
 	////////////////////////////////////////////////
 	//打印对方手牌
@@ -239,6 +254,7 @@ void state(USER* Our, USER* enemy)
 	{
 		//牌名text
 		enemy_cards(x, 0);//
+		Sleep(1000);
 	}
 	////血量为零时循环结束
 	///// </summary>
@@ -262,8 +278,13 @@ void state(USER* Our, USER* enemy)
 //绘制双方状态，选择要出的牌,并把牌放在屏幕上
 int attack(USER* Our,USER* enemy,int card)
 {
-	get_card(Our,enemy);
+	Node* p = Our->shoupai->next;
+	state(Our,enemy);
+	shashantao(1117, 329, p);
+	picture(1200, 329, "我方");
+	shashantao_music(p);
 
+	state(Our, enemy);
 }
 //接受用户所点击的牌，并返回
 int get_card(USER* Our, USER* enemy)
@@ -326,7 +347,11 @@ int get_card(USER* Our, USER* enemy)
 void attacked(USER* Our, USER* enemy, int enemy_card_id)
 {
 	Node* p = Our->shoupai->next;
-	shashantao(0, 222, p);
+	state(Our, enemy);
+	shashantao(560, 275, p);
+	shashantao_music(p);
+	picture(20, 275, "敌方");
+	state(Our, enemy);
 }
 //竞争函数
 void competition(USER* Our, USER* enemy, int card, int enemy_card_id)
