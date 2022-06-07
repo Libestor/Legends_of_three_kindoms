@@ -296,7 +296,7 @@ int attack(USER* Our,USER* enemy,int card)
 int get_card(USER* Our, USER* enemy)
 {
 	//结束回合按钮
-	button(555, 346, 170, 70, "结束回合");
+	button(1100, 450, 170, 70, "结束回合");
 	state(Our, enemy);
 	ExMessage msg;
 	while (true)
