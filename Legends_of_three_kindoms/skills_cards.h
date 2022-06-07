@@ -3,6 +3,7 @@
 #pragma once
 //#include <malloc.h>
 #include<stdlib.h>
+#include<time.h>
 #define ElemType CARDS* 
 //#include"easyx.h"
 //#include"LinkList.h"
