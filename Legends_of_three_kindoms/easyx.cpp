@@ -206,7 +206,8 @@ void state(USER* Our, USER* enemy)
 	//打印自己手牌
 	Node* p = Our->shoupai->next;
 	shashantao(0, 551,p);//
-	for (int i = 1,x=164; i < (Our->shoupai->length); i++, x = x + 164,p=p->next)
+	int i, x;
+	for (i = 1,x=164, p = p->next; i < (Our->shoupai->length); i++, x = x + 164)
 	{
 		//牌名text
 		shashantao(x, 551,p);//
