@@ -23,12 +23,12 @@ void BGM()
 	}
 }
 //音效调用函数
-void music(const char text[])
+void music(char text[])
 {
 	//触发条件
 	//if()
 	//打开音乐
-	mciSendString("open ./%c.mp3 alias BGM ", text, 0, 0);
+	mciSendString("open ./%c.mp3 alias BGM ",text, 0, 0);
 	//播放音乐
 	mciSendString("play BGM", 0, 0, 0);
 }
@@ -207,9 +207,9 @@ void shashantao(int x, int y, Node* p)
 	}
 }
 //血量绘制函数
-void blood(int x, int y, Node* p)
+void blood(int x, int y, USER* p)
 {
-	switch (p->wujiang->PH_current)
+	switch (p->wj->PH_current)
 	{
 	case 1:
 		picture(x, y, "一血.png");
@@ -283,7 +283,6 @@ int attack(USER* Our,USER* enemy,int card)
 	shashantao(1117, 329, p);
 	picture(1200, 329, "我方");
 	shashantao_music(p);
-
 	state(Our, enemy);
 }
 //接受用户所点击的牌，并返回
@@ -349,8 +348,8 @@ void attacked(USER* Our, USER* enemy, int enemy_card_id)
 	Node* p = Our->shoupai->next;
 	state(Our, enemy);
 	shashantao(560, 275, p);
-	shashantao_music(p);
 	picture(20, 275, "敌方");
+	shashantao_music(p);
 	state(Our, enemy);
 }
 //竞争函数
