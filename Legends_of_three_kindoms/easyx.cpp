@@ -309,6 +309,10 @@ int get_card(USER* Our, USER* enemy)
 				//判断鼠标点击位置,即牌的位置
 				for (int x = 0, card = 1; x <= 164 * (Our->shoupai->length); card++, x = x + 164)
 				{
+					if (msg.x >= 555 && msg.x <= 725 && msg.y >= 346 && msg.y <= 416)
+					{
+						return -1;
+					}
 					if (msg.x >= x && msg.x <= x + 164 && msg.y >= 551 && msg.y <= 773)
 					{
 						Node* p = Our->shoupai->next;
@@ -319,10 +323,7 @@ int get_card(USER* Our, USER* enemy)
 							shashantao(1117, 329, p);//
 							for (int i = 2; i <= (Our->shoupai->length); i++)
 							{
-								if (msg.x >= 555 && msg.x <= 725 && msg.y >= 346 && msg.y <= 416)
-								{
-									return -1;
-								}
+								
 								if (i = card)
 								{
 									i--;
