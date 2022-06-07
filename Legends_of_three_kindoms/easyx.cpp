@@ -200,7 +200,9 @@ void enemy_cards(int x, int y)
 //绘制双方状态
 void state(USER* Our, USER* enemy)
 {	
-	cleardevice;
+	cleardevice();
+	picture(0, 0, "./BGP.jpg");
+	button(1100, 450, 170, 70, "结束回合");
 	//打印自己手牌
 	Node* p = Our->shoupai->next;
 	shashantao(0, 551,p);//
@@ -296,7 +298,7 @@ int attack(USER* Our,USER* enemy,int card)
 int get_card(USER* Our, USER* enemy)
 {
 	//结束回合按钮
-	button(1100, 450, 170, 70, "结束回合");
+	
 	state(Our, enemy);
 	ExMessage msg;
 	while (true)
@@ -309,34 +311,40 @@ int get_card(USER* Our, USER* enemy)
 				//判断鼠标点击位置,即牌的位置
 				for (int x = 0, card = 1; x <= 164 * (Our->shoupai->length); card++, x = x + 164)
 				{
-					if (msg.x >= 555 && msg.x <= 725 && msg.y >= 346 && msg.y <= 416)
+					if (msg.x >= 1100 && msg.x <= 1100+170 && msg.y >= 450 && msg.y <= 450+70)
+					{
+						//button(1100, 450, 170, 70, "结束回合");
+						return -1;
+					}
+					else if (msg.x >= 555 && msg.x <= 725 && msg.y >= 346 && msg.y <= 416)
 					{
 						return -1;
 					}
-					if (msg.x >= 0 && msg.x <= 164 && msg.y >= 551 && msg.y <= 773)
+					else if (msg.x >= 0 && msg.x <= 164 && msg.y >= 551 && msg.y <= 773)
 					{
 						return 1;
 					}
-					if (msg.x >= 164 && msg.x <= 328 && msg.y >= 551 && msg.y <= 773)
+					else if (msg.x >= 164 && msg.x <= 328 && msg.y >= 551 && msg.y <= 773)
 					{
 						return 2;
 					}
-					if (msg.x >= 328 && msg.x <= 492 && msg.y >= 551 && msg.y <= 773)
+					else if (msg.x >= 328 && msg.x <= 492 && msg.y >= 551 && msg.y <= 773)
 					{
 						return 3;
 					}
-					if (msg.x >= 492 && msg.x <= 656 && msg.y >= 551 && msg.y <= 773)
+					else if (msg.x >= 492 && msg.x <= 656 && msg.y >= 551 && msg.y <= 773)
 					{
 						return 4;
 					}
-					if (msg.x >= 656 && msg.x <= 820 && msg.y >= 551 && msg.y <= 773)
+					else if (msg.x >= 656 && msg.x <= 820 && msg.y >= 551 && msg.y <= 773)
 					{
 						return 5;
 					}
-					if (msg.x >= 820 && msg.x <= 984 && msg.y >= 551 && msg.y <= 773)
+					else if (msg.x >= 820 && msg.x <= 984 && msg.y >= 551 && msg.y <= 773)
 					{
 						return 6;
 					}
+
 				}
 			}
 		}
@@ -431,7 +439,7 @@ int start_game(USER* Our, USER* enemy)
 int end_huihe()
 {
 	//结束回合按钮
-	button(555, 346, 170, 70, "结束回合");
+	//button(555, 346, 170, 70, "结束回合");
 	ExMessage msg;
 	while (true)
 	{

@@ -36,7 +36,7 @@ int main()
 			//state(people, ai);
 			//给我几号牌
 			BEGIN:
-			int num = get_card(people,ai);
+			int num = get_card(people,ai); // 并不确定该牌是否存在，需要判断。
 			printf("%d", num);
 			if (num == -1 )
 			{
