@@ -295,6 +295,8 @@ int attack(USER* Our,USER* enemy,int card)
 //接受用户所点击的牌，并返回
 int get_card(USER* Our, USER* enemy)
 {
+	//结束回合按钮
+	button(555, 346, 170, 70, "结束回合");
 	state(Our, enemy);
 	ExMessage msg;
 	while (true)
@@ -317,6 +319,10 @@ int get_card(USER* Our, USER* enemy)
 							shashantao(1117, 329, p);//
 							for (int i = 2; i <= (Our->shoupai->length); i++)
 							{
+								if (msg.x >= 555 && msg.x <= 725 && msg.y >= 346 && msg.y <= 416)
+								{
+									return -1;
+								}
 								if (i = card)
 								{
 									i--;
