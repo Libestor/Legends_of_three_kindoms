@@ -167,7 +167,7 @@ void shashantao(int x, int y, Node* p)
 	 switch (p->data->name)
 	{
 	case 1:
-		picture(x,y,"杀.png");
+		picture(x, y, "杀.png");
 		break;
 	case 2:
 		picture(x, y, "闪.png");
@@ -201,8 +201,6 @@ void enemy_cards(int x, int y)
 void state(USER* Our, USER* enemy)
 {	
 	//打印自己手牌
-	cleardevice();
-	picture(0, 0, "./BGP.jpg");
 	Node* p = Our->shoupai->next;
 	shashantao(0, 551,p);//
 	for (int i = 1,x=164; i < (Our->shoupai->length); i++, x = x + 164,p=p->next)
@@ -242,101 +240,104 @@ void state(USER* Our, USER* enemy)
 int attack(USER* Our,USER* enemy,int card)
 {
 	state(Our, enemy);
-	ExMessage msg;
-	if (peekmessage(&msg, EM_MOUSE))
+	while (true)
 	{
-		switch (msg.message)
+		ExMessage msg;
+		if (peekmessage(&msg, EM_MOUSE))
 		{
-		case WM_LBUTTONDOWN:
-			//判断鼠标点击位置,即牌的位置
-			BEGIN:
-			for (int x = 0, card = 1; x <= 164 * (Our->shoupai->length); card++, x = x + 164)
+			switch (msg.message)
 			{
-				if (msg.x >= x && msg.x <= x + 164 && msg.y >= 551 && msg.y <= 773)
+			case WM_LBUTTONDOWN:
+				//判断鼠标点击位置,即牌的位置
+			BEGIN:
+				for (int x = 0, card = 1; x <= 164 * (Our->shoupai->length); card++, x = x + 164)
 				{
-					Node* p = Our->shoupai->next;
-					//此处已经是第一张牌
-					for (int i = 2; i <= card; i++)
+					if (msg.x >= x && msg.x <= x + 164 && msg.y >= 551 && msg.y <= 773)
 					{
-						p = p->next;
-						shashantao(1117,329,p);//
-						for (int i = 2;i<= (Our->shoupai->length); i++)
+						Node* p = Our->shoupai->next;
+						//此处已经是第一张牌
+						for (int i = 2; i <= card; i++)
 						{
-							if (i = card)
+							p = p->next;
+							shashantao(1117, 329, p);//
+							for (int i = 2; i <= (Our->shoupai->length); i++)
 							{
-								i--;
-								continue;
-							}
-							else
-							{
-								state(Our, enemy);
+								if (i = card)
+								{
+									i--;
+									continue;
+								}
+								else
+								{
+
+									state(Our, enemy);
+								}
 							}
 						}
-					} 
-					//现在就经获得牌了
-					if ((p->data->name) == Shan || p->data->name == WuXieKeJi)                         //可修改
-					{
-						goto BEGIN;
+						//现在就经获得牌了
+						if ((p->data->name) == Shan || p->data->name == WuXieKeJi)                         //可修改
+						{
+							goto BEGIN;
+						}
+						if (card == 0)
+						{
+							return -1;
+						}
+						return card;
 					}
-					if (card == 0)
-					{
-						break;
-					}
-					return card;
-				}
 
-				return -1;
+				}
 			}
 		}
 	}
-	return -1;
 }
 //接受用户所点击的牌，并返回
 int get_card(USER* Our, USER* enemy)
 {
 	state(Our, enemy);
 	ExMessage msg;
-	if (peekmessage(&msg, EM_MOUSE))
+	while (true)
 	{
-		switch (msg.message)
+		if (peekmessage(&msg, EM_MOUSE))
 		{
-		case WM_LBUTTONDOWN:
-			//判断鼠标点击位置,即牌的位置
-			for (int x = 0, card = 1; x <= 164 * (Our->shoupai->length); card++, x = x + 164)
+			switch (msg.message)
 			{
-				if (msg.x >= x && msg.x <= x + 164 && msg.y >= 551 && msg.y <= 773)
+			case WM_LBUTTONDOWN:
+				//判断鼠标点击位置,即牌的位置
+				for (int x = 0, card = 1; x <= 164 * (Our->shoupai->length); card++, x = x + 164)
 				{
-					Node* p = Our->shoupai->next;
-					//此处已经是第一张牌
-					for (int i = 2; i <= card; i++)
+					if (msg.x >= x && msg.x <= x + 164 && msg.y >= 551 && msg.y <= 773)
 					{
-						p = p->next;
-						shashantao(1117, 329, p);//
-						for (int i = 2; i <= (Our->shoupai->length); i++)
+						Node* p = Our->shoupai->next;
+						//此处已经是第一张牌
+						for (int i = 2; i <= card; i++)
 						{
-							if (i = card)
+							p = p->next;
+							shashantao(1117, 329, p);//
+							for (int i = 2; i <= (Our->shoupai->length); i++)
 							{
-								i--;
-								continue;
-							}
-							else
-							{
-								state(Our, enemy);
+								if (i = card)
+								{
+									i--;
+									continue;
+								}
+								else
+								{
+									return i;
+									state(Our, enemy);
+								}
 							}
 						}
+						if (card == 0)
+						{
+							return -1;
+						}
+						return card;
 					}
-					if (card == 0)
-					{
-						break;
-					}
-					return card;
 				}
-
-				return 0;
 			}
 		}
 	}
-	return 0;
 }
 //被攻击时 绘制双方状态，并把enemy_card_id放到屏幕中间
 void attacked(USER* Our, USER* enemy, int enemy_card_id)
@@ -406,7 +407,6 @@ int start_game(USER* Our, USER* enemy)
 					int isok = MessageBox(hnd, "您确定要退出吗？", "警告！", MB_OKCANCEL);
 					if (isok == IDOK)
 					{
-						return 0;
 						closegraph();
 					}
 				}
@@ -419,16 +419,15 @@ int start_game(USER* Our, USER* enemy)
 	}
 	getchar();
 	//关闭窗口
-	return 0;
 	closegraph();
 
-	
+	return 0;
 }
 //结束回合
 int end_huihe()
 {
 	//结束回合按钮
-	button(1100, 500, 170, 70, "结束回合");
+	button(555, 346, 170, 70, "结束回合");
 	ExMessage msg;
 	while (true)
 	{
@@ -443,7 +442,7 @@ int end_huihe()
 				//开始游戏
 				if (msg.x >= 555 && msg.x <= 725 && msg.y >= 346 && msg.y <= 416)
 				{
-					return 1;
+					return -1;
 				}
 				break;
 			default:
