@@ -313,34 +313,29 @@ int get_card(USER* Our, USER* enemy)
 					{
 						return -1;
 					}
-					if (msg.x >= x && msg.x <= x + 164 && msg.y >= 551 && msg.y <= 773)
+					if (msg.x >= 0 && msg.x <= 164 && msg.y >= 551 && msg.y <= 773)
 					{
-						Node* p = Our->shoupai->next;
-						//此处已经是第一张牌
-						for (int i = 2; i <= card; i++)
-						{
-							p = p->next;
-							shashantao(1117, 329, p);//
-							for (int i = 2; i <= (Our->shoupai->length); i++)
-							{
-								
-								if (i = card)
-								{
-									i--;
-									continue;
-								}
-								else
-								{
-									return i;
-									state(Our, enemy);
-								}
-							}
-						}
-						if (card == 0)
-						{
-							return -1;
-						}
-						return card;
+						return 1;
+					}
+					if (msg.x >= 164 && msg.x <= 328 && msg.y >= 551 && msg.y <= 773)
+					{
+						return 2;
+					}
+					if (msg.x >= 328 && msg.x <= 492 && msg.y >= 551 && msg.y <= 773)
+					{
+						return 3;
+					}
+					if (msg.x >= 492 && msg.x <= 656 && msg.y >= 551 && msg.y <= 773)
+					{
+						return 4;
+					}
+					if (msg.x >= 656 && msg.x <= 820 && msg.y >= 551 && msg.y <= 773)
+					{
+						return 5;
+					}
+					if (msg.x >= 820 && msg.x <= 984 && msg.y >= 551 && msg.y <= 773)
+					{
+						return 6;
 					}
 				}
 			}
