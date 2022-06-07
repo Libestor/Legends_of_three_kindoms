@@ -200,6 +200,7 @@ void enemy_cards(int x, int y)
 //绘制双方状态
 void state(USER* Our, USER* enemy)
 {	
+	cleardevice;
 	//打印自己手牌
 	Node* p = Our->shoupai->next;
 	shashantao(0, 551,p);//
@@ -342,7 +343,8 @@ int get_card(USER* Our, USER* enemy)
 //被攻击时 绘制双方状态，并把enemy_card_id放到屏幕中间
 void attacked(USER* Our, USER* enemy, int enemy_card_id)
 {
-	state(Our, enemy);
+	Node* p = Our->shoupai->next;
+	shashantao(0, 222, p);
 }
 //竞争函数
 void competition(USER* Our, USER* enemy, int card, int enemy_card_id)
