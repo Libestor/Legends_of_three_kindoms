@@ -192,6 +192,25 @@ void shashantao(int x, int y, Node* p)
 		break;
 	}
 }
+//血量绘制函数
+void blood(int x, int y, Node* p)
+{
+	switch (p->wujiang->PH_current)
+	{
+	case 1:
+		picture(x, y, "一血.png");
+		break;
+	case 2:
+		picture(x, y, "二血.png");
+		break;
+	case 3:
+		picture(x, y, "三血.png");
+		break;
+	case 4:
+		picture(x, y, "四血.png");
+		break;
+	}
+}
 //敌方手牌背面
 void enemy_cards(int x, int y)
 {
@@ -242,64 +261,15 @@ void state(USER* Our, USER* enemy)
 //绘制双方状态，选择要出的牌,并把牌放在屏幕上
 int attack(USER* Our,USER* enemy,int card)
 {
-	state(Our, enemy);
-	while (true)
-	{
-		ExMessage msg;
-		if (peekmessage(&msg, EM_MOUSE))
-		{
-			switch (msg.message)
-			{
-			case WM_LBUTTONDOWN:
-				//判断鼠标点击位置,即牌的位置
-			BEGIN:
-				for (int x = 0, card = 1; x <= 164 * (Our->shoupai->length); card++, x = x + 164)
-				{
-					if (msg.x >= x && msg.x <= x + 164 && msg.y >= 551 && msg.y <= 773)
-					{
-						Node* p = Our->shoupai->next;
-						//此处已经是第一张牌
-						for (int i = 2; i <= card; i++)
-						{
-							p = p->next;
-							shashantao(1117, 329, p);//
-							for (int i = 2; i <= (Our->shoupai->length); i++)
-							{
-								if (i = card)
-								{
-									i--;
-									continue;
-								}
-								else
-								{
+	get_card(Our,enemy);
 
-									state(Our, enemy);
-								}
-							}
-						}
-						//现在就经获得牌了
-						if ((p->data->name) == Shan || p->data->name == WuXieKeJi)                         //可修改
-						{
-							goto BEGIN;
-						}
-						if (card == 0)
-						{
-							return -1;
-						}
-						return card;
-					}
-
-				}
-			}
-		}
-	}
 }
 //接受用户所点击的牌，并返回
 int get_card(USER* Our, USER* enemy)
 {
 	//结束回合按钮
-	
 	state(Our, enemy);
+	button(1100, 450, 170, 70, "结束回合");
 	ExMessage msg;
 	while (true)
 	{
@@ -314,6 +284,7 @@ int get_card(USER* Our, USER* enemy)
 					if (msg.x >= 1100 && msg.x <= 1100+170 && msg.y >= 450 && msg.y <= 450+70)
 					{
 						//button(1100, 450, 170, 70, "结束回合");
+						Sleep(1000);
 						return -1;
 					}
 					else if (msg.x >= 555 && msg.x <= 725 && msg.y >= 346 && msg.y <= 416)
