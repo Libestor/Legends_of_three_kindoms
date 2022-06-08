@@ -300,6 +300,7 @@ int wanjianqifa_skill(USER* A, USER* B)//定义万箭齐发的功能
 int delatenodelocate(Head* head,int n)//指定删除链表节点
 {
 	Node* p = head->next;
+	Node* pr = p;
 	if (p->data->name == n )
 	{
 		head->next = p->next;
@@ -307,15 +308,14 @@ int delatenodelocate(Head* head,int n)//指定删除链表节点
 		head->length--;
 		return 1;
 	}
-	while (p->next->data->name != n)
+	p = p->next;
+	pr = p;
+	for (; p->data->name != n;)
 	{
+		pr = p;
 		p = p->next;
-		if (p->next == NULL)
-		{
-			return 0;
-		}
 	}
-	Node* temp = p->next;
+	pr = p->next;
 	free(p);
 	head->length--;
 	return 1;
