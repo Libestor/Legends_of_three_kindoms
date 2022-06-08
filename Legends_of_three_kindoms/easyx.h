@@ -15,7 +15,7 @@
 //背景音乐函数
 void BGM();
 //音效调用函数
-void music(char text[]);
+void music(const char text[]);
 //图片调用函数
 void picture(int x, int y, const char text[]);
 //鼠标位置判断（点击牌和确认）

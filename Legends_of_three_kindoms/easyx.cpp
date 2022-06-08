@@ -23,7 +23,7 @@ void BGM()
 	}
 }
 //音效调用函数
-void music(char text[])
+void music(const char text[])
 {
 	//触发条件
 	//if()
