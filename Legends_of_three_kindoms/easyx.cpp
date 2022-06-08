@@ -317,7 +317,7 @@ int get_card(USER* Our, USER* enemy)
 {
 	//结束回合按钮
 	state(Our, enemy);
-	button(1100, 450, 170, 70, "结束回合");
+	button(1100, 400, 170, 70, "结束回合");
 	ExMessage msg;
 	while (true)
 	{
@@ -377,6 +377,7 @@ void attacked(USER* Our, USER* enemy, int enemy_card_id)
 	shashantao(560, 275, p);
 	picture(20, 275, "敌方.jpg");
 	shashantao_music(p);
+	Sleep(3000);
 	state(Our, enemy);
 }
 //竞争函数
