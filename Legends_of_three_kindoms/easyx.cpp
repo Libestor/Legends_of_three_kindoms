@@ -173,28 +173,28 @@ void shashantao_music(int cur)
 	switch (cur)
 	{
 	case 1:
-		music("杀");
+		music("杀.mp3");
 		break;
 	case 2:
-		music("闪");
+		music("闪.mp3");
 		break;
 	case 3:
-		music("桃");
+		music("桃.mp3");
 		break;
 	case 4:
-		music("决斗");
+		music("决斗.mp3");
 		break;
 	case 5:
-		music("万箭齐发");
+		music("万箭齐发.mp3");
 		break;
 	case 6:
-		music("南蛮入侵");
+		music("南蛮入侵.mp3");
 		break;
 	case 7:
-		music("无懈可击");
+		music("无懈可击.mp3");
 		break;
 	case 8:
-		music("过河拆桥");
+		music("过河拆桥.mp3");
 		break;
 	}
 }
