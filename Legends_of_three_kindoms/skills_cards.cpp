@@ -1,5 +1,6 @@
 #include"skills_cards.h"
 #include"easyx.h"
+#include""
 WARLORD *zhangfei()//张飞的初始化
 {
 	WARLORD* zhangfei;
@@ -321,6 +322,7 @@ int delatenodelocate(Head* head,int n)//指定删除链表节点
 	}
 	pr->next = p->next;
 	free(p);
+	p = NULL;
 	head->length--;
 	return 1;
 }//指定位置删除节点

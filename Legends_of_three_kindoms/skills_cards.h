@@ -1,5 +1,3 @@
-
-
 #pragma once
 //#include <malloc.h>
 #include<stdlib.h>
@@ -8,8 +6,6 @@
 //#include"easyx.h"
 //#include"LinkList.h"
 typedef int Status; //¶¨Òå×´Ì¬
-
-
 typedef struct USER USER;
 typedef struct WARLORD//Îä½«
 {
