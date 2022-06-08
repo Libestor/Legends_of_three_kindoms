@@ -80,3 +80,4 @@ int delatenodelocate(Head* head, int n);//指定位置删除节点
 CARDS* guohechaiqiao();//定义过河拆桥的花色和点数
 int guohechaiqiao_skill(USER* A, USER* B, int cur);//定义过河拆桥的功能
 CARDS* wuxiekeji();//定义无懈可击的花色和点数
+int search(Head* head, int n);//搜索手牌中的牌

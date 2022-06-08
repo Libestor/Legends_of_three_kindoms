@@ -1,6 +1,6 @@
 #include"skills_cards.h"
 #include"easyx.h"
-#include""
+#include"LinkList.h"
 WARLORD *zhangfei()//张飞的初始化
 {
 	WARLORD* zhangfei;
@@ -51,16 +51,17 @@ CARDS* kill()//定义杀的花色和点数
 }
 int kill_skill(USER* A, USER* B, int cur)//杀的功能
 {
-	delatenodelocate(A->shoupai, Sha);
+	DeletList(A->shoupai, cur);
 	attack(A,B,Sha);
 	int a;
-	a = delatenodelocate(B->shoupai, Shan);
+	a = search(B->shoupai, Shan);
 	if (a == 0)
 	{
 		B->wj->PH_current--;
 	}
-	else if (a == 1)
+	else
 	{
+		DeletList(B->shoupai, a);
 		attacked(A, B, Sha);
 	}
 	return 0;
@@ -93,9 +94,9 @@ CARDS* tao()//定义桃的花色和点数
 }
 int tao_skill(USER* A, USER* B, int cur)//桃的功能
 {
-	delatenodelocate(A->shoupai, Tao);
-	attack(A, B, Tao);
+	DeletList(A->shoupai, cur);
 	A->wj->PH_current++;
+	attack(A, B, Tao);
 	return 0;
 }
 WARLORD* search_wujiang()//随机抽取武将
@@ -202,11 +203,12 @@ CARDS* juedou()//定义决斗的点数和花色
 int juedou_skill(USER* A, USER* B,int cur)//定义决斗的功能
 {
 	int x;
-	delatenodelocate(A->shoupai, JueDou);
+	DeletList(A->shoupai, cur);
 	attack(A, B, JueDou);
-	x = delatenodelocate(B->shoupai, WuXieKeJi);
-	if (x == 1)
+	x = search(B->shoupai, WuXieKeJi);
+	if (x)
 	{
+		DeletList(B->shoupai, x);
 		attacked(A, B, WuXieKeJi);
 		return 0;
 	}
@@ -214,19 +216,21 @@ int juedou_skill(USER* A, USER* B,int cur)//定义决斗的功能
 	{
 		int a;
 		int b;
-		a = delatenodelocate(B->shoupai, Sha);
+		a = search(B->shoupai, Sha);
 		if (a == 0)
 		{
 			B->wj->PH_current--;
 			return 0;
 		}
+		DeletList(B->shoupai, a);
 		attacked(A, B, Sha);
-		b = delatenodelocate(A->shoupai, Sha);
+		b = search(A->shoupai, Sha);
 		if (b == 0)
 		{
 			A->wj->PH_current--;
 			return 0;
 		}
+		DeletList(A->shoupai, b);
 		attack(A, B, Sha);
 	}
 }
@@ -245,21 +249,23 @@ int nanmanruqin_skill(USER* A, USER* B, int cur)//定义南蛮入侵的功能
 {
 	int a;
 	int x;
-	delatenodelocate(A->shoupai, NanManRuQin);
+	DeletList(A->shoupai, cur);
 	attack(A, B, NanManRuQin);
-	x = delatenodelocate(B->shoupai, WuXieKeJi);
-	if (x == 1)
+	x = search(B->shoupai, WuXieKeJi);
+	if (x)
 	{
+		DeletList(B->shoupai, x);
 		attacked(A, B, WuXieKeJi);
 		return 0;
 	}
-	a = delatenodelocate(B->shoupai, Sha);
+	a = search(B->shoupai, Sha);
 	if (a == 0)
 	{
 		B->wj->PH_current--;
 	}
-	else if (a == 1)
+	else if (a)
 	{
+		DeletList(B->shoupai, a);
 		attacked(A, B, Sha);
 	}
 	return 0;
@@ -279,21 +285,23 @@ int wanjianqifa_skill(USER* A, USER* B, int cur)//定义万箭齐发的功能
 {
 	int b;
 	int x;
-	delatenodelocate(A->shoupai, WanJianQiFa);
+	DeletList(A->shoupai, cur);
 	attack(A, B, WanJianQiFa);
-	x = delatenodelocate(B->shoupai, WuXieKeJi);
-	if (x == 1)
+	x = search(B->shoupai, WuXieKeJi);
+	if (x)
 	{
+		DeletList(B->shoupai, x);
 		attacked(A, B, WuXieKeJi);
 		return 0;
 	}
-	b = delatenodelocate(B->shoupai, Shan);
+	b = search(B->shoupai, Shan);
 	if (b == 0)
 	{
 		B->wj->PH_current--;
 	}
-	else if (b == 1)
+	else if (b)
 	{
+		DeletList(B->shoupai, b);
 		attacked(A, B, Shan);
 	}
 	return 0;
@@ -341,16 +349,33 @@ int guohechaiqiao_skill(USER* A, USER* B, int cur)//定义过河拆桥的功能
 {
 	int x;
 	int temp;
-	delatenodelocate(A->shoupai, GuoHeChaiQiao);
+	DeletList(A->shoupai, cur);
 	attack(A, B, GuoHeChaiQiao);
-	x = delatenodelocate(B->shoupai, WuXieKeJi);
-	if (x == 1)
+	x = search(B->shoupai, WuXieKeJi);
+	if (x)
 	{
+		DeletList(B->shoupai, x);
 		attacked(A, B, WuXieKeJi);
 		return 0;
 	}
 	temp = B->shoupai->next->data->name;
-	free(B->shoupai->next);
+	DeletList(B->shoupai, search(B->shoupai, temp));
 	attacked(A, B, temp);
 	return 0;
+}
+int search(Head* head, int n)
+{
+	Node* p;
+	int i = 1;
+	p = head->next;
+	while (p->data->name != n)
+	{
+		if (p->next == NULL)
+		{
+			return 0;
+		}
+		p = p->next;
+		i++;
+	}
+	return i;
 }
