@@ -17,7 +17,7 @@ void BGM();
 //音效调用函数
 void music(const char text[]);
 //图片调用函数
-void picture(int x, int y, const char text[]);
+void picture(int x, int y,char text[]);
 //鼠标位置判断（点击牌和确认）
 int mousepick(ExMessage msg);
 //主菜单点击判断
@@ -29,6 +29,8 @@ void button(int x, int y, int w, int h, const char text[]);
 //窗口标题
 void change();
 ///////////////////////////////////////////////////////////复杂函数
+//武将图片调用
+void wujiang_picture(USER* Our, USER* enemy);
 //调用杀闪桃音效函数
 void shashantao_music(Node* p);
 //调用杀闪桃图片函数

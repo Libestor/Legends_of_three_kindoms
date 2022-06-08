@@ -146,7 +146,28 @@ void change()
 }
 
 ///////////////////////////////////////////////////////////////////复杂函数
-
+//武将图片调用
+void wujiang_picture(USER* Our, USER* enemy)
+{
+	switch (Our->wj->name)
+	{
+	case 1:
+		picture(1117, 551, "张飞.png");
+		break;
+	case 2:
+		picture(1117, 551, "典韦.png");
+		break;
+	}
+	switch (enemy->wj->name)
+	{
+	case 1:
+		picture(0, 0, "张飞.png");
+		break;
+	case 2:
+		picture(0, 0, "典韦.png");
+		break;
+	}
+}
 //调用杀闪桃音效函数
 void shashantao_music(Node* p)
 {
@@ -238,8 +259,9 @@ void state(USER* Our, USER* enemy)
 {	
 	cleardevice();
 	picture(0, 0, "./BGP.jpg");
-	button(1100, 450, 170, 70, "结束回合");
-	//打印自己手牌
+	button(1100, 400, 170, 70, "结束回合");
+	wujiang_picture(Our,enemy);
+	//打印自己手牌和武将信息
 	Node* p = Our->shoupai->next;
 	shashantao(0, 551,p);//
 	int i, x;
@@ -284,7 +306,7 @@ int attack(USER* Our,USER* enemy,int card)
 	Node* p = Our->shoupai->next;
 	state(Our,enemy);
 	shashantao(1117, 329, p);
-	picture(1200, 329, "我方");
+	picture(1200, 329, "我方.jpg");
 	shashantao_music(p);
 	Sleep(3000);
 	state(Our, enemy);
@@ -353,7 +375,7 @@ void attacked(USER* Our, USER* enemy, int enemy_card_id)
 	Node* p = Our->shoupai->next;
 	state(Our, enemy);
 	shashantao(560, 275, p);
-	picture(20, 275, "敌方");
+	picture(20, 275, "敌方.jpg");
 	shashantao_music(p);
 	state(Our, enemy);
 }
@@ -366,11 +388,8 @@ void competition(USER* Our, USER* enemy, int card, int enemy_card_id)
 //错误发生窗口，点击确定则关闭窗口
 void wrong()
 {
-	int isok = MessageBox(NULL, "发生错误了", "错误", MB_OKCANCEL);
-	if (isok == IDOK)
-	{
-		closegraph();
-	}
+	int isok = MessageBox(NULL, "发生错误了", "错误",NULL);
+	
 }
 //初始页面，返回1表示开始游戏，返回0表示结束游戏
 int start_game(USER* Our, USER* enemy)
