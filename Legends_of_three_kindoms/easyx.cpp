@@ -408,7 +408,7 @@ void wrong()
 void in_card()
 {
 	HWND hnd = GetHWnd();
-	int isok = MessageBox(hnd, "请摸牌牌", "你的摸牌阶段", NULL);
+	int isok = MessageBox(hnd, "请摸牌", "你的摸牌阶段", NULL);
 }
 //出牌阶段函数
 void out_card()
@@ -487,34 +487,17 @@ int start_game(USER* Our, USER* enemy)
 	return 0;
 }
 //结束回合
-int end_huihe()
+int end_huihe(USER *people , USER *ai)
 {
 	//结束回合按钮
 	//button(555, 346, 170, 70, "结束回合");
-	ExMessage msg;
-	while (true)
-	{
-		//双缓冲绘图
-		BeginBatchDraw();
-		if (peekmessage(&msg, EM_MOUSE))
-		{
-			switch (msg.message)
-			{
-			case WM_LBUTTONDOWN:
-				//判断鼠标点击位置
-				//开始游戏
-				if (msg.x >= 555 && msg.x <= 725 && msg.y >= 346 && msg.y <= 416)
-				{
-					return -1;
-				}
-				break;
-			default:
-				break;
-			}
-			EndBatchDraw();
-		}
+	state(people, ai);
 
-	}
+	button(600, 200, 170, 70, "回合结束");
+	Sleep(2000);
+	state(people, ai);
+	return 0;
+
 }
 //开始游戏
 void start_game1(USER* Our, USER* enemy)

@@ -56,7 +56,7 @@ void out_card();
 //不能出牌函数
 void wrong_card();//提示不能出牌
 //结束回合
-int end_huihe();
+int end_huihe(USER* people,USER* ai);
 //开始游戏
 int start_game(USER* Our, USER* enemy);//点击开始游戏
 int start_game1(USER* Our, USER* enemy);//点击开始游戏

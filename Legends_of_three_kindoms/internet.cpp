@@ -1,5 +1,6 @@
 #include"internet.h"
 #include"skills_cards.h"
+#include"LinkList.h"
 int AI_kill_skill(USER* A, USER* B, int cur)
 {
 	DeletList(A->shoupai, cur);
@@ -155,7 +156,7 @@ void AI(USER* people, USER* ai)
 	{
 		AI_kill_skill(people, ai, 1);
 	}
-	for (int i = 2; i <= num; i++)//³öÅÆ
+	for (int i = 2; i < num; i++)//³öÅÆ
 	{
 		p = p->next;
 		if (p->data->name == NanManRuQin)
@@ -192,7 +193,11 @@ void AI(USER* people, USER* ai)
 		int m = ai->wj->PH_current;
 		int a, i;
 		a = n - m;
-		for (i = 0; i < a; i++)
+		while (ai->shoupai->length - ai->wj->PH_current > 0)
+		{
+			DeletList(ai->shoupai, 1);
+		}
+		/*for (i = 0; i < a; i++)
 		{
 			if ((Shan != p->data->name || Tao != p->data->name) && p->next != NULL)
 			{
@@ -210,8 +215,8 @@ void AI(USER* people, USER* ai)
 					q->next = p->next;
 				}
 				free(p);
-			}
-		}
+			}*/
+		//}
 
 	}
 	Sleep(100);

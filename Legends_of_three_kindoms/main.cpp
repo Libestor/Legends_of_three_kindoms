@@ -57,7 +57,7 @@ int main()
 				{
 					losscard(people,ai);
 				}
-				end_huihe();
+				end_huihe(people,ai);
 				goto END;
 			}
 			Node* q = (Node*)malloc(sizeof(Node));
@@ -96,7 +96,7 @@ int main()
 		
 		flag += 1;
 		AI(people,ai);
-		end_huihe();
+		end_huihe(people,ai);
 	}
 	
 	return 0;
