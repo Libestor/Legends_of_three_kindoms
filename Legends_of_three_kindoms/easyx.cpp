@@ -337,7 +337,7 @@ int get_card(USER* Our, USER* enemy)
 				//判断鼠标点击位置,即牌的位置
 				for (int x = 0, card = 1; x <= 164 * (Our->shoupai->length); card++, x = x + 164)
 				{
-					if (msg.x >= 1100 && msg.x <= 1100+170 && msg.y >= 450 && msg.y <= 450+70)
+					if (msg.x >= 1100 && msg.x <= 1100+170 && msg.y >= 400 && msg.y <= 400+70)
 					{
 						//button(1100, 450, 170, 70, "结束回合");
 						Sleep(1000);
