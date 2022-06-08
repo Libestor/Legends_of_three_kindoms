@@ -49,6 +49,12 @@ int get_card(USER* Our, USER* enemy);//接收用户所点击的牌，并返回
 void competition(USER* Our, USER* enemy, int card, int enemy_card_i); //绘制双方状态，把我方第card牌放到中件，对面id牌也放到中间
 //报错
 void wrong();//发生错误并退出
+//摸牌阶段
+void in_card();
+//出牌阶段函数
+void out_card();
+//不能出牌函数
+void wrong_card();//提示不能出牌
 //结束回合
 int end_huihe();
 //开始游戏
