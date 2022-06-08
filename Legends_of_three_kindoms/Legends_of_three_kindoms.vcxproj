@@ -145,9 +145,15 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="BGP.jpg" />
+    <Image Include="一血.png" />
     <Image Include="万箭齐发.png" />
+    <Image Include="三血.png" />
+    <Image Include="二血.png" />
     <Image Include="决斗.png" />
     <Image Include="南蛮入侵.png" />
+    <Image Include="四血.png" />
+    <Image Include="我方.jpg" />
+    <Image Include="敌方.jpg" />
     <Image Include="无懈可击.png" />
     <Image Include="杀.png" />
     <Image Include="桃.png" />
