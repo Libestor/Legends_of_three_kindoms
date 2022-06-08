@@ -48,7 +48,7 @@ int main()
 				end_huihe();
 				goto END;
 			}
-			if (num == Sha || num == WuXieKeJi)
+			if (num == Shan || num == WuXieKeJi)
 			{
 				goto BEGIN;
 			}
@@ -59,7 +59,7 @@ int main()
 				p->next;
 			}
 			//int attack(USER * Our, USER * enemy, int card);
-			int enemy_card = (p->data->skill)(people, ai);  //调用手牌函数
+			int enemy_card = (p->data->skill)(people, ai,num);  //调用手牌函数
 			//打印牌双方的牌
 			
 			if (ai->wj->PH_current==0) {

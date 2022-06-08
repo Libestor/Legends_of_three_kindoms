@@ -48,7 +48,7 @@ CARDS* kill()//定义杀的花色和点数
 	kill->name = Sha;
 	return kill;
 }
-int kill_skill(USER* A, USER* B)//杀的功能
+int kill_skill(USER* A, USER* B, int cur)//杀的功能
 {
 	delatenodelocate(A->shoupai, Sha);
 	attack(A,B,Sha);
@@ -75,7 +75,7 @@ CARDS* shan()//定义闪的花色和点数
 	shan->name = Shan;
 	return shan;
 }
-int shan_skill(USER* A, USER* B)//闪的功能
+int shan_skill(USER* A, USER* B, int cur)//闪的功能
 {
 	return 1;
 }
@@ -90,7 +90,7 @@ CARDS* tao()//定义桃的花色和点数
 	tao->name = Tao;
 	return tao;
 }
-int tao_skill(USER* A, USER* B)//桃的功能
+int tao_skill(USER* A, USER* B, int cur)//桃的功能
 {
 	delatenodelocate(A->shoupai, Tao);
 	attack(A, B, Tao);
@@ -198,7 +198,7 @@ CARDS* juedou()//定义决斗的点数和花色
 	juedou->name = JueDou;
 	return juedou;
 }
-int juedou_skill(USER* A, USER* B)//定义决斗的功能
+int juedou_skill(USER* A, USER* B,int cur)//定义决斗的功能
 {
 	int x;
 	delatenodelocate(A->shoupai, JueDou);
@@ -240,7 +240,7 @@ CARDS* nanmanruqin()//定义南蛮入侵的点数和花色
 	nanmanruqin->name = NanManRuQin;
 	return nanmanruqin;
 }
-int nanmanruqin_skill(USER* A, USER* B)//定义南蛮入侵的功能
+int nanmanruqin_skill(USER* A, USER* B, int cur)//定义南蛮入侵的功能
 {
 	int a;
 	int x;
@@ -274,7 +274,7 @@ CARDS* wanjianqifa()//定义万箭齐发的点数和花色
 	wanjianqifa->name = WanJianQiFa;
 	return wanjianqifa;
 }
-int wanjianqifa_skill(USER* A, USER* B)//定义万箭齐发的功能
+int wanjianqifa_skill(USER* A, USER* B, int cur)//定义万箭齐发的功能
 {
 	int b;
 	int x;
@@ -335,7 +335,7 @@ CARDS* guohechaiqiao()//定义过河拆桥的花色和点数
 	guohechaiqiao->skill = guohechaiqiao_skill;
 	return guohechaiqiao;
 }
-int guohechaiqiao_skill(USER* A, USER* B)//定义过河拆桥的功能
+int guohechaiqiao_skill(USER* A, USER* B, int cur)//定义过河拆桥的功能
 {
 	int x;
 	int temp;
