@@ -263,13 +263,20 @@ void state(USER* Our, USER* enemy)
 	wujiang_picture(Our,enemy);
 	//打印自己手牌和武将信息
 	Node* p = Our->shoupai->next;
-	shashantao(0, 551,p);//
-	int i, x;
-	for (i = 1,x=164, p = p->next; i < (Our->shoupai->length); i++, x = x + 164)
+	//shashantao(0, 551,p);//
+	int i, x=0;
+	//for (i = 1,x=164, p = p->next; i < (Our->shoupai->length); i++, x = x + 164)
+	//{
+	//	//牌名text
+	//	shashantao(x, 551,p);//
+	//	//Sleep(1000);
+	//}
+	 while (p->next != NULL)
 	{
-		//牌名text
-		shashantao(x, 551,p);//
-		//Sleep(1000);
+
+		shashantao(x, 551, p);
+		x += 164;
+		p = p->next;
 	}
 	////////////////////////////////////////////////
 	//打印对方手牌

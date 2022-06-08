@@ -8,7 +8,7 @@
 typedef int STATUS;
 
 void losscard(USER* people, USER* ai);
-USER* init_all();
-STATUS GameOver(); //gameover成功就进入新一盘游戏，否则就直接停止程序
+USER* init_User();
+STATUS GameOver(USER* people,USER* ai); //gameover成功就进入新一盘游戏，否则就直接停止程序
 
  
