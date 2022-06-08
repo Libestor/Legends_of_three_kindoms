@@ -60,7 +60,7 @@ int kill_skill(USER* A, USER* B)//杀的功能
 	}
 	else if (a == 1)
 	{
-		attack(A, B, Sha);
+		attacked(A, B, Sha);
 	}
 	return 0;
 }
@@ -206,7 +206,7 @@ int juedou_skill(USER* A, USER* B)//定义决斗的功能
 	x = delatenodelocate(B->shoupai, WuXieKeJi);
 	if (x == 1)
 	{
-		attack(A, B, WuXieKeJi);
+		attacked(A, B, WuXieKeJi);
 		return 0;
 	}
 	for (;;)
@@ -219,7 +219,7 @@ int juedou_skill(USER* A, USER* B)//定义决斗的功能
 			B->wj->PH_current--;
 			return 0;
 		}
-		attack(A, B, Sha);
+		attacked(A, B, Sha);
 		b = delatenodelocate(A->shoupai, Sha);
 		if (b == 0)
 		{
@@ -249,7 +249,7 @@ int nanmanruqin_skill(USER* A, USER* B)//定义南蛮入侵的功能
 	x = delatenodelocate(B->shoupai, WuXieKeJi);
 	if (x == 1)
 	{
-		attack(A, B, WuXieKeJi);
+		attacked(A, B, WuXieKeJi);
 		return 0;
 	}
 	a = delatenodelocate(B->shoupai, Sha);
@@ -259,7 +259,7 @@ int nanmanruqin_skill(USER* A, USER* B)//定义南蛮入侵的功能
 	}
 	else if (a == 1)
 	{
-		attack(A, B, Sha);
+		attacked(A, B, Sha);
 	}
 	return 0;
 }
@@ -283,7 +283,7 @@ int wanjianqifa_skill(USER* A, USER* B)//定义万箭齐发的功能
 	x = delatenodelocate(B->shoupai, WuXieKeJi);
 	if (x == 1)
 	{
-		attack(A, B, WuXieKeJi);
+		attacked(A, B, WuXieKeJi);
 		return 0;
 	}
 	b = delatenodelocate(B->shoupai, Shan);
@@ -293,13 +293,14 @@ int wanjianqifa_skill(USER* A, USER* B)//定义万箭齐发的功能
 	}
 	else if (b == 1)
 	{
-		attack(A, B, Shan);
+		attacked(A, B, Shan);
 	}
 	return 0;
 }
 int delatenodelocate(Head* head,int n)//指定删除链表节点
 {
 	Node* p = head->next;
+	Node* pr = p;
 	if (p->data->name == n )
 	{
 		head->next = p->next;
@@ -307,15 +308,18 @@ int delatenodelocate(Head* head,int n)//指定删除链表节点
 		head->length--;
 		return 1;
 	}
-	while (p->next->data->name != n)
+	p = p->next;
+	pr = p;
+	for (; p->data->name != n;)
 	{
-		p = p->next;
+		pr = p;
 		if (p->next == NULL)
 		{
 			return 0;
 		}
+		p = p->next;
 	}
-	Node* temp = p->next;
+	pr->next = p->next;
 	free(p);
 	head->length--;
 	return 1;
@@ -340,11 +344,11 @@ int guohechaiqiao_skill(USER* A, USER* B)//定义过河拆桥的功能
 	x = delatenodelocate(B->shoupai, WuXieKeJi);
 	if (x == 1)
 	{
-		attack(A, B, WuXieKeJi);
+		attacked(A, B, WuXieKeJi);
 		return 0;
 	}
 	temp = B->shoupai->next->data->name;
 	free(B->shoupai->next);
-	attack(A, B, temp);
+	attacked(A, B, temp);
 	return 0;
 }
