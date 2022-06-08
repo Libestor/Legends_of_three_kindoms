@@ -144,7 +144,6 @@ void change()
 	//设置窗口标题
 	SetWindowText(hnd, "三国杀");
 }
-
 ///////////////////////////////////////////////////////////////////复杂函数
 //武将图片调用
 void wujiang_picture(USER* Our, USER* enemy)
@@ -281,13 +280,21 @@ void state(USER* Our, USER* enemy)
 	////////////////////////////////////////////////
 	//打印对方手牌
 	Node* q = enemy->shoupai->next;
-	enemy_cards(0, 0);//
-	for (int i = 1, x = 1117; i < (enemy->shoupai->length); i++, x = x - 164, q = q->next)
+	int i, x = 1117;
+	while (p->next != NULL)
 	{
-		//牌名text
-		enemy_cards(x, 0);//
-		//Sleep(1000);
+
+		shashantao(x, 551, q);
+		x -= 164;
+		p = p->next;
 	}
+	//enemy_cards(0, 0);//
+	//for (int i = 1, x = 1117; i < (enemy->shoupai->length); i++, x = x - 164, q = q->next)
+	//{
+	//	//牌名text
+	//	enemy_cards(x, 0);//
+	//	//Sleep(1000);
+	//}
 	////血量为零时循环结束
 	///// </summary>
 	//for (int i = 0; PH_current=0; i++)
@@ -400,6 +407,24 @@ void wrong()
 {
 	int isok = MessageBox(NULL, "发生错误了", "错误",NULL);
 	
+}
+//摸牌阶段
+void in_card()
+{
+	HWND hnd = GetHWnd();
+	int isok = MessageBox(hnd, "请摸牌牌", "你的摸牌阶段", NULL);
+}
+//出牌阶段函数
+void out_card()
+{
+	HWND hnd = GetHWnd();
+	int isok = MessageBox(hnd, "请出牌", "你的出牌阶段", NULL);
+}
+//不能出牌函数
+void wrong_card()
+{
+	HWND hnd = GetHWnd();
+	int isok = MessageBox(hnd, "你不能出这张牌", "错误", NULL);
 }
 //初始页面，返回1表示开始游戏，返回0表示结束游戏
 int start_game(USER* Our, USER* enemy)
