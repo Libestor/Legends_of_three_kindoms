@@ -52,6 +52,30 @@
     <Media Include="BGM.mp3">
       <Filter>资源文件</Filter>
     </Media>
+    <Media Include="过河拆桥.mp3">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="决斗.mp3">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="南蛮入侵.mp3">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="杀.mp3">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="闪.mp3">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="顺手牵羊.mp3">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="万箭齐发.mp3">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="无懈可击.mp3">
+      <Filter>资源文件</Filter>
+    </Media>
   </ItemGroup>
   <ItemGroup>
     <Image Include="BGP.jpg">
