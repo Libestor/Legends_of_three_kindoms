@@ -313,7 +313,8 @@ int attack(USER* Our,USER* enemy,int card)
 	Node* p = Our->shoupai->next;
 	state(Our,enemy);
 	shashantao(1117, 329, p);
-	picture(1200, 329, "我方.jpg");
+	picture(640, 329, "我方.jpg");
+	Sleep(1000);
 	shashantao_music(p);
 	Sleep(3000);
 	state(Our, enemy);
@@ -382,7 +383,8 @@ void attacked(USER* Our, USER* enemy, int enemy_card_id)
 	Node* p = Our->shoupai->next;
 	state(Our, enemy);
 	shashantao(560, 275, p);
-	picture(20, 275, "敌方.jpg");
+	picture(640, 275, "敌方.jpg");
+	Sleep(1000);
 	shashantao_music(p);
 	Sleep(3000);
 	state(Our, enemy);
