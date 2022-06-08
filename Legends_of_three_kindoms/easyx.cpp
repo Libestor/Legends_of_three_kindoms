@@ -168,9 +168,9 @@ void wujiang_picture(USER* Our, USER* enemy)
 	}
 }
 //调用杀闪桃音效函数
-void shashantao_music(Node* p)
+void shashantao_music(int cur)
 {
-	switch (p->data->name)
+	switch (cur)
 	{
 	case 1:
 		music("杀");
@@ -199,32 +199,32 @@ void shashantao_music(Node* p)
 	}
 }
 //调用杀闪桃图片函数
-void shashantao(int x, int y, Node* p)
+void shashantao(int x, int y, int cur)
 {
-	 switch (p->data->name)
+	 switch (cur)
 	{
-	case 1:
+	case Sha:
 		picture(x, y, "杀.png");
 		break;
-	case 2:
+	case Shan:
 		picture(x, y, "闪.png");
 		break;
-	case 3:
+	case Tao:
 		picture(x, y, "桃.png");
 		break;
-	case 4:
+	case JueDou:
 		picture(x, y, "决斗.png");
 		break;
-	case 5:
+	case WanJianQiFa:
 		picture(x, y, "万箭齐发.png");
 		break;
-	case 6:
+	case NanManRuQin:
 		picture(x, y, "南蛮入侵.png");
 		break;
-	case 7:
+	case WuXieKeJi:
 		picture(x, y, "无懈可击.png");
 		break;
-	case 8:
+	case GuoHeChaiQiao:
 		picture(x, y, "过河拆桥.png");
 		break;
 	}
@@ -273,26 +273,19 @@ void state(USER* Our, USER* enemy)
 	 while (p->next != NULL)
 	{
 
-		shashantao(x, 551, p);
+		shashantao(x, 551, p->data->name);
 		x += 164;
 		p = p->next;
 	}
 	////////////////////////////////////////////////
 	//打印对方手牌
-	x = 1117;
-	while (p->next != NULL)
+	
+	for (int i = 0, x = 1117; i < (enemy->shoupai->length); i++, x = x - 164)
 	{
-
-		enemy_cards(x, 551);
-		x -= 164;
+		//牌名text
+		enemy_cards(x, 0);//
+		//Sleep(1000);
 	}
-	//enemy_cards(0, 0);//
-	//for (int i = 1, x = 1117; i < (enemy->shoupai->length); i++, x = x - 164, q = q->next)
-	//{
-	//	//牌名text
-	//	enemy_cards(x, 0);//
-	//	//Sleep(1000);
-	//}
 	////血量为零时循环结束
 	///// </summary>
 	//for (int i = 0; PH_current=0; i++)
@@ -313,16 +306,19 @@ void state(USER* Our, USER* enemy)
 	//}
 }
 //绘制双方状态，选择要出的牌,并把牌放在屏幕上
-int attack(USER* Our,USER* enemy,int card)
+int attack(USER* Our, USER* enemy, int card)
 {
-	Node* p = Our->shoupai->next;
-	state(Our,enemy);
-	shashantao(1117, 329, p);
-	picture(640, 329, "我方.jpg");
-	Sleep(1000);
-	shashantao_music(p);
+	//Node* p;//创建一个用于存储新节点的指针
+	//p = (Node*)malloc(sizeof(Node));
+	//p->data->name = card;
+	//Node* p = Our->shoupai->next;
+	state(Our, enemy);
+	shashantao(1117, 329, card);
+	picture(1200, 329, "我方");
+	//shashantao_music(p);
 	Sleep(3000);
 	state(Our, enemy);
+	//free(p);
 	return 0;
 }
 //接受用户所点击的牌，并返回
@@ -385,13 +381,15 @@ int get_card(USER* Our, USER* enemy)
 //被攻击时 绘制双方状态，并把enemy_card_id放到屏幕中间
 void attacked(USER* Our, USER* enemy, int enemy_card_id)
 {
-	Node* p = Our->shoupai->next;
+	//Node* p = (Node*)malloc(sizeof(Node));
+	//p->data->name = enemy_card_id;
 	state(Our, enemy);
-	shashantao(560, 275, p);
+	shashantao(560, 275, enemy_card_id);
 	picture(640, 275, "敌方.jpg");
 	Sleep(1000);
-	shashantao_music(p);
+	shashantao_music(enemy_card_id);
 	Sleep(3000);
+	//free(p);
 	state(Our, enemy);
 }
 //竞争函数

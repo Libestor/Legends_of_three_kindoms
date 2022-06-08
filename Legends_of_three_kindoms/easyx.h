@@ -32,9 +32,9 @@ void change();
 //武将图片调用
 void wujiang_picture(USER* Our, USER* enemy);
 //调用杀闪桃音效函数
-void shashantao_music(Node* p);
+void shashantao_music(int cur);
 //调用杀闪桃图片函数
-void shashantao(int x, int y, Node* p);
+void shashantao(int x, int y, int cur);
 //敌方手牌背面
 void enemy_cards(int x, int y);
 //状态函数
