@@ -279,14 +279,12 @@ void state(USER* Our, USER* enemy)
 	}
 	////////////////////////////////////////////////
 	//打印对方手牌
-	Node* q = enemy->shoupai->next;
-	int i, x = 1117;
+	x = 1117;
 	while (p->next != NULL)
 	{
 
-		shashantao(x, 551, q);
+		enemy_cards(x, 551);
 		x -= 164;
-		p = p->next;
 	}
 	//enemy_cards(0, 0);//
 	//for (int i = 1, x = 1117; i < (enemy->shoupai->length); i++, x = x - 164, q = q->next)
