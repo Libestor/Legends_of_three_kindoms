@@ -230,9 +230,9 @@ void shashantao(int x, int y, int cur)
 	}
 }
 //血量绘制函数
-void blood(int x, int y, USER* p)
+void blood(int x, int y, int p)
 {
-	switch (p->wj->PH_current)
+	switch (p)
 	{
 	case 1:
 		picture(x, y, "一血.png");
