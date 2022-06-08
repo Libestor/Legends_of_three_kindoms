@@ -262,6 +262,8 @@ void state(USER* Our, USER* enemy)
 	wujiang_picture(Our,enemy);
 	//打印自己手牌和武将信息
 	Node* p = Our->shoupai->next;
+	//我方武将血量
+	blood(1130,441, Our->wj->PH_current);
 	//shashantao(0, 551,p);//
 	int i, x=0;
 	//for (i = 1,x=164, p = p->next; i < (Our->shoupai->length); i++, x = x + 164)
@@ -279,7 +281,8 @@ void state(USER* Our, USER* enemy)
 	}
 	////////////////////////////////////////////////
 	//打印对方手牌
-	
+	 //敌方武将血量
+	 blood(0, 222, enemy->wj->PH_current);
 	for (int i = 0, x = 1117; i < (enemy->shoupai->length); i++, x = x - 164)
 	{
 		//牌名text
@@ -314,7 +317,7 @@ int attack(USER* Our, USER* enemy, int card)
 	//Node* p = Our->shoupai->next;
 	state(Our, enemy);
 	shashantao(1117, 329, card);
-	picture(1200, 329, "我方");
+	picture(1500, 329, "我方");
 	//shashantao_music(p);
 	Sleep(3000);
 	state(Our, enemy);
@@ -326,7 +329,7 @@ int get_card(USER* Our, USER* enemy)
 {
 	//结束回合按钮
 	state(Our, enemy);
-	button(1100, 400, 170, 70, "结束回合");
+	picture(555, 483, "结束出牌.png");
 	ExMessage msg;
 	while (true)
 	{
@@ -338,9 +341,8 @@ int get_card(USER* Our, USER* enemy)
 				//判断鼠标点击位置,即牌的位置
 				for (int x = 0, card = 1; x <= 164 * (Our->shoupai->length); card++, x = x + 164)
 				{
-					if (msg.x >= 1100 && msg.x <= 1100+170 && msg.y >= 400 && msg.y <= 400+70)
+					if (msg.x >= 555 && msg.x <= 555+190 && msg.y >= 483 && msg.y <= 483+68)
 					{
-						//button(1100, 450, 170, 70, "结束回合");
 						Sleep(1000);
 						return -1;
 					}
@@ -385,7 +387,7 @@ void attacked(USER* Our, USER* enemy, int enemy_card_id)
 	//p->data->name = enemy_card_id;
 	state(Our, enemy);
 	shashantao(560, 275, enemy_card_id);
-	picture(640, 275, "敌方.jpg");
+	picture(340, 275, "敌方.jpg");
 	Sleep(1000);
 	//shashantao_music(enemy_card_id);
 	Sleep(3000);
