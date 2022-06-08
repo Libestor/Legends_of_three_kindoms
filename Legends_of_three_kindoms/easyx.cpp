@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<easyx.h>
 // 引用图形库头文件
@@ -19,18 +20,20 @@ void BGM()
 	mciSendString("play BGM repeat", 0, 0, 0);
 	if (0)
 	{
-		mciSendString("close BGM", 0, 0, 0);
+		//mciSendString("close BGM", 0, 0, 0);
 	}
 }
 //音效调用函数
-void music(char text[])
+void music(const char text[])
 {
 	//触发条件
 	//if()
 	//打开音乐
-	mciSendString("open ./%c.mp3 alias BGM ",text, 0, 0);
-	//播放音乐
-	mciSendString("play BGM", 0, 0, 0);
+	///*char a[50];
+	//sprintf(a,"open ./%s.mp3 alias BGM ",text);
+	//mciSendString(a,0, 0, 0);
+	////播放音乐
+	//mciSendString("play BGM", 0, 0, 0);*/
 }
 //图片调用函数
 void picture(int x, int y, const char text[])
@@ -244,7 +247,7 @@ void state(USER* Our, USER* enemy)
 	{
 		//牌名text
 		shashantao(x, 551,p);//
-		Sleep(1000);
+		//Sleep(1000);
 	}
 	////////////////////////////////////////////////
 	//打印对方手牌
@@ -254,7 +257,7 @@ void state(USER* Our, USER* enemy)
 	{
 		//牌名text
 		enemy_cards(x, 0);//
-		Sleep(1000);
+		//Sleep(1000);
 	}
 	////血量为零时循环结束
 	///// </summary>
@@ -283,7 +286,9 @@ int attack(USER* Our,USER* enemy,int card)
 	shashantao(1117, 329, p);
 	picture(1200, 329, "我方");
 	shashantao_music(p);
+	Sleep(3000);
 	state(Our, enemy);
+	return 0;
 }
 //接受用户所点击的牌，并返回
 int get_card(USER* Our, USER* enemy)

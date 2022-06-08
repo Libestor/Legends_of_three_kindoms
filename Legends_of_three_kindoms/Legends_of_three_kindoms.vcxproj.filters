@@ -78,5 +78,23 @@
     <Image Include="无懈可击.png">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="敌方.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="二血.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="三血.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="四血.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="我方.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="一血.png">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>
