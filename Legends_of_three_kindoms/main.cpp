@@ -19,7 +19,7 @@ int main()
 	srand(GetTickCount());
 	USER *people=init_User();
 	USER *ai=init_User();
-	 
+	int flag = 0;
 	//初始化人物
 	
 	//是进入游戏还是退出游戏
@@ -32,6 +32,18 @@ int main()
 		// 游戏开始
 		while (true)
 		{
+			if (flag != 0)
+			{
+				//抽牌
+				for (int  i = 0; i < 2; i++)
+				{
+					if (!AddList(people->shoupai,people->shoupai->length+1,search_pai()))
+					{
+
+					}
+				}
+				in_card();
+			}
 			
 			//人的回合
 			state(people, ai);
@@ -68,7 +80,17 @@ int main()
 			state(people, ai);
 
 		}
-		END:
+	END:
+		//抽牌
+		for (int i = 0; i < 2; i++)
+		{
+			if (!AddList(ai->shoupai, ai->shoupai->length + 1, search_pai()))
+			{
+				//错误
+			}
+		}
+		
+		flag += 1;
 		AI(people,ai);
 		end_huihe();
 	}

@@ -280,7 +280,7 @@ void state(USER* Our, USER* enemy)
 	////////////////////////////////////////////////
 	//打印对方手牌
 	Node* q = enemy->shoupai->next;
-	int i, x = 1117;
+	x = 1117;
 	while (p->next != NULL)
 	{
 

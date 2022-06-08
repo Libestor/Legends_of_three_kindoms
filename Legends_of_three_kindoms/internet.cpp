@@ -6,56 +6,56 @@ void AI(USER* people, USER* ai)
 	Node* p = ai->shoupai->next; //此处已经是第一张牌
 	if (p->data->name == NanManRuQin)
 	{
-		nanmanruqin_skill(ai, people);
+		nanmanruqin_skill(ai, people,1);
 	}
 	if (p->data->name == WanJianQiFa)
 	{
-		wanjianqifa_skill(ai, people);
+		wanjianqifa_skill(ai, people,1);
 	}
 	if (p->data->name == GuoHeChaiQiao)
 	{
-		guohechaiqiao_skill(ai, people);
+		guohechaiqiao_skill(ai, people,1);
 	}
 	if (p->data->name == Tao)
 	{
 		if (ai->wj->PH_current < 4)
-			tao_skill(ai, people);
+			tao_skill(ai, people, 1);
 	}
 	if (p->data->name == JueDou)
 	{
-		juedou_skill(ai, people);
+		juedou_skill(ai, people, 1);
 	}
 	if (p->data->name == Sha)
 	{
-		kill_skill(ai, people);
+		kill_skill(ai, people, 1);
 	}
 	for (int i = 2; i <= num; i++)//出牌
 	{
 		p = p->next;
 		if (p->data->name == NanManRuQin)
 		{
-			nanmanruqin_skill(ai, people);
+			nanmanruqin_skill(ai, people, 1);
 		}
 		if (p->data->name == WanJianQiFa)
 		{
-			wanjianqifa_skill(ai, people);
+			wanjianqifa_skill(ai, people, 1);
 		}
 		if (p->data->name == GuoHeChaiQiao)
 		{
-			guohechaiqiao_skill(ai, people);
+			guohechaiqiao_skill(ai, people, 1);
 		}
 		if (p->data->name == Tao)
 		{
 			if (ai->wj->PH_current < 4)
-				tao_skill(ai, people);
+				tao_skill(ai, people, 1);
 		}
 		if (p->data->name == JueDou)
 		{
-			juedou_skill(ai, people);
+			juedou_skill(ai, people, 1);
 		}
 		if (p->data->name == Sha)
 		{
-			kill_skill(ai, people);
+			kill_skill(ai, people, 1);
 		}
 		Sleep(100);
 	} //现在就经获得牌了
