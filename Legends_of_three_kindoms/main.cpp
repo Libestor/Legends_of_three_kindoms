@@ -60,18 +60,22 @@ int main()
 				end_huihe();
 				goto END;
 			}
-			if (num == Shan || num == WuXieKeJi)
-			{
-				goto BEGIN;
-			}
-			//attack(people, ai, num);
-			Node* p = people->shoupai->next;
+			Node* q = (Node*)malloc(sizeof(Node));
+			q = people->shoupai->next;
+			
 			for (int i = 1; i < num; i++)
 			{
-				p->next;
+				q = q->next;
 			}
+			if (q->data->name == Shan || q->data->name == WuXieKeJi)
+			{
+				goto BEGIN;
+				printf("\nshan");
+			}
+			//attack(people, ai, num);
+			
 			//int attack(USER * Our, USER * enemy, int card);
-			int enemy_card = (p->data->skill)(people, ai,num);  //调用手牌函数
+			int enemy_card = (q->data->skill)(people, ai,num);  //调用手牌函数
 			//打印牌双方的牌
 			
 			if (ai->wj->PH_current==0) {

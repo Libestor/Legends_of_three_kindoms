@@ -122,10 +122,10 @@ Status AddList(Head* list, int cur, ElemType e)// 在某个位置上加入结点
 
 Status DeletList(Head* list, int cur) //删除某个结点
 {
-	if (cur < 0 || list->length < cur || list->length <0) //排除错误
-	{
-		return ERROR;
-	}
+	//if (cur < 0 || list->length < cur || list->length <0) //排除错误
+	//{
+	//	return ERROR;
+	//}
 	// 寻找要删除点的前一个点
 	if (cur - 1 == 0) //如果前一个位置是头,说明是删除头结点
 	{

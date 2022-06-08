@@ -62,7 +62,7 @@ int kill_skill(USER* A, USER* B, int cur)//杀的功能
 	else
 	{
 		DeletList(B->shoupai, a);
-		attacked(A, B, Sha);
+		attacked(A, B, Shan);
 	}
 	return 0;
 }
@@ -365,17 +365,35 @@ int guohechaiqiao_skill(USER* A, USER* B, int cur)//定义过河拆桥的功能
 }
 int search(Head* head, int n)
 {
+	//Node* p;
+	//int j = 1;
+	//p = head->next;
+	//while (p->data->name != n)
+	//{
+	//	if (p->next == NULL)
+	//	{
+	//		return 0;
+	//	}
+	//	j  = j + 1 ;
+	//	p = p->next;
+
+	//	
+	//}
+	//return j;
+	if (head->length == 0) return ERROR; //链表要存在, 感觉可有可无
 	Node* p;
 	int i = 1;
-	p = head->next;
-	while (p->data->name != n)
+	p = head->next;//取出头指针
+	while (p->next)
 	{
-		if (p->next == NULL)
+		i++;
+		if (p->data->name == n)
 		{
-			return 0;
+			//node = p;
+			return i;
 		}
 		p = p->next;
-		i++;
 	}
-	return i;
+	return 0;
+
 }

@@ -387,7 +387,7 @@ void attacked(USER* Our, USER* enemy, int enemy_card_id)
 	shashantao(560, 275, enemy_card_id);
 	picture(640, 275, "µÐ·½.jpg");
 	Sleep(1000);
-	shashantao_music(enemy_card_id);
+	//shashantao_music(enemy_card_id);
 	Sleep(3000);
 	//free(p);
 	state(Our, enemy);
