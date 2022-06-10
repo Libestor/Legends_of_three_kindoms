@@ -1,3 +1,4 @@
+#define TIME_EASYX 1000
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<easyx.h>
@@ -319,7 +320,7 @@ int attack(USER* Our, USER* enemy, int card)
 	shashantao(1117, 329, card);
 	picture(1500, 329, "我方");
 	//shashantao_music(p);
-	Sleep(3000);
+	Sleep(3*TIME_EASYX);
 	state(Our, enemy);
 	//free(p);
 	return 0;
@@ -343,7 +344,7 @@ int get_card(USER* Our, USER* enemy)
 				{
 					if (msg.x >= 555 && msg.x <= 555+190 && msg.y >= 483 && msg.y <= 483+68)
 					{
-						Sleep(1000);
+						Sleep(TIME_EASYX);
 						return -1;
 					}
 					else if (msg.x >= 555 && msg.x <= 725 && msg.y >= 346 && msg.y <= 416)
@@ -388,9 +389,9 @@ void attacked(USER* Our, USER* enemy, int enemy_card_id)
 	state(Our, enemy);
 	shashantao(560, 275, enemy_card_id);
 	picture(340, 275, "敌方.jpg");
-	Sleep(1000);
+	Sleep(TIME_EASYX);
 	//shashantao_music(enemy_card_id);
-	Sleep(3000);
+	Sleep(3* TIME_EASYX);
 	//free(p);
 	state(Our, enemy);
 }
@@ -496,7 +497,7 @@ int end_huihe(USER *people , USER *ai)
 	state(people, ai);
 
 	button(600, 200, 170, 70, "回合结束");
-	Sleep(2000);
+	Sleep(2* TIME_EASYX);
 	state(people, ai);
 	return 0;
 
